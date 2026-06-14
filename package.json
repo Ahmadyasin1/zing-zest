@@ -1,0 +1,35 @@
+{
+  "name": "zing-zest-ai-platform",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "node --max-old-space-size=8192 node_modules/next/dist/bin/next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test:smoke": "node scripts/test-app.mjs",
+    "test:ai": "node scripts/test-ai.mjs"
+  },
+  "dependencies": {
+    "@huggingface/inference": "^3.15.0",
+    "chart.js": "^4.4.8",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.6.3",
+    "lucide-react": "^0.487.0",
+    "next": "^15.2.4",
+    "react": "^19.0.0",
+    "react-chartjs-2": "^5.3.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.3",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
+    "eslint": "^9.24.0",
+    "eslint-config-next": "^15.2.4",
+    "tailwindcss": "^4.1.3",
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Zing & Zest Street Bites — Marketing Intelligence Platform for Lahore growth strategy, customer insights, and investor-grade planning." />
+  <title>Zing & Zest Street Bites | Marketing Intelligence Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="data.js" defer></script>
+  <script src="content.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div id="splash" class="splash-screen">
+    <div class="splash-content">
+      <img src="zing_zest_logo.png" alt="Zing & Zest Street Bites Logo" class="splash-logo" />
+      <h1>Zing &amp; Zest Street Bites</h1>
+      <p>Fresh. Fast. Full of Flavor.</p>
+      <div class="splash-loader"></div>
+      <p id="splashStatus" class="splash-status">Initializing platform...</p>
+    </div>
+  </div>
+
+  <div id="scrollProgress" class="scroll-progress"></div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <img src="zing_zest_logo.png" alt="Zing & Zest Street Bites" class="brand-logo" />
+      <button id="sbClose" class="icon-btn" aria-label="Close menu">✕</button>
+    </div>
+    <div class="sidebar-brand">
+      <h2>Zing &amp; Zest</h2>
+      <p>Marketing Intelligence Platform</p>
+      <p class="brand-tagline">Fresh. Fast. Full of Flavor.</p>
+    </div>
+    <button id="themeToggle" class="theme-btn">☀ Light Mode</button>
+    <nav class="sidebar-nav" aria-label="Primary">
+      <button class="sb-link active" data-target="cover">Overview</button>
+      <button class="sb-link" data-target="report">Executive Report</button>
+      <button class="sb-link" data-target="part4">Customer Personas</button>
+      <button class="sb-link" data-target="part2">Forecasting Models</button>
+      <button class="sb-link" data-target="part3">Competitor Dashboard</button>
+      <button class="sb-link" data-target="part5">Journey &amp; Recovery</button>
+      <button class="sb-link" data-target="part1">Research &amp; Brand</button>
+      <button class="sb-link" data-target="transparency">AI Methodology</button>
+      <button class="sb-link" data-target="conclusion">Executive Close</button>
+    </nav>
+    <div class="sidebar-footnote">
+      <p>Lahore | Spring 2026</p>
+      <p>AIUE3013 · UCP</p>
+    </div>
+  </aside>
+
+  <div class="platform-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button id="tbMenu" class="icon-btn" aria-label="Open menu">☰</button>
+        <p id="tbCrumb">Cover Page</p>
+      </div>
+      <div class="topbar-right">
+        <p class="tb-live"><span class="live-dot"></span> -- · --</p>
+        <button id="topTheme" class="icon-btn" aria-label="Toggle theme">☀</button>
+        <button id="btnPresent" class="primary-btn">Present</button>
+      </div>
+    </header>
+
+    <main class="page-container">
+      <section id="cover" class="page active">
+        <section id="overview" class="insight-section">
+          <div class="hero-panel">
+            <div class="hero-brand">
+              <img src="zing_zest_logo.png" alt="Zing & Zest Street Bites" class="hero-logo" />
+              <div>
+                <h1>Zing &amp; Zest Street Bites</h1>
+                <p class="hero-tagline">Fresh. Fast. Full of Flavor.</p>
+              </div>
+            </div>
+            <p class="hero-positioning">
+              Zing &amp; Zest Street Bites is a modern, hygienic, affordable-premium food truck for students and young urban consumers who want fast, flavorful burgers, shawarma, fries, and cold drinks with a trustworthy and visually attractive brand experience.
+            </p>
+            <div class="hero-kpis">
+              <article class="kpi-card">
+                <h3>20</h3>
+                <p>Semi-structured interviews completed</p>
+              </article>
+              <article class="kpi-card">
+                <h3>Rs. 45,150</h3>
+                <p>4-week integrated campaign budget</p>
+              </article>
+              <article class="kpi-card">
+                <h3>100</h3>
+                <p>Day-1 customer acquisition target</p>
+              </article>
+              <article class="kpi-card">
+                <h3>3</h3>
+                <p>Core segments prioritized for launch</p>
+              </article>
+            </div>
+          </div>
+
+          <!-- Assignment 4 Deliverables Hub -->
+          <div class="content-card deliverables-hub">
+            <div class="dh-header">
+              <h2>Assignment 4 — Complete Deliverables</h2>
+              <span class="dh-badge">8 / 8 Included</span>
+            </div>
+            <p class="dh-sub">Every required submission artifact is integrated into this platform — click any card to navigate directly.</p>
+            <div id="deliverablesGrid" class="deliverables-grid"></div>
+          </div>
+
+          <div class="content-card">
+            <h2>Quick Navigation</h2>
+            <div class="quick-nav-grid">
+              <button type="button" class="quick-nav-card" onclick="goTo('report')">
+                <h3>Executive Report</h3>
+                <p>Full 2,847-word Assignment 4 written report</p>
+              </button>
+              <button type="button" class="quick-nav-card" onclick="goTo('part1')">
+                <h3>Research &amp; Brand</h3>
+                <p>Interview-driven demand, menu, and pricing insights</p>
+              </button>
+              <button type="button" class="quick-nav-card" onclick="goTo('part4')">
+                <h3>IMC &amp; Intelligence</h3>
+                <p>Budgeted launch funnel and persona analytics</p>
+              </button>
+              <button type="button" class="quick-nav-card" onclick="goTo('part2')">
+                <h3>Forecast</h3>
+                <p>Revenue trajectory, break-even, and scenarios</p>
+              </button>
+              <button type="button" class="quick-nav-card" onclick="goTo('part3')">
+                <h3>Competitive</h3>
+                <p>Market benchmarking and threat landscape</p>
+              </button>
+              <button type="button" class="quick-nav-card" onclick="goTo('part5')">
+                <h3>Automation &amp; Crisis</h3>
+                <p>Chatbot, loyalty, and recovery planning</p>
+              </button>
+              <button type="button" class="quick-nav-card" onclick="goTo('transparency')">
+                <h3>Methodology</h3>
+                <p>AI workflow, prompts, and validation</p>
+              </button>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ═══ EXECUTIVE REPORT (Deliverable 1) ═══ -->
+      <section id="report" class="page">
+        <section class="insight-section">
+          <div class="section-head report-head">
+            <div>
+              <h2>Executive Report</h2>
+              <p>Assignment 4 complete written report — AI-driven food truck growth intelligence for Zing &amp; Zest Street Bites.</p>
+            </div>
+            <div class="report-meta">
+              <span class="report-word-badge" id="reportWordCount">2,847 words</span>
+              <button class="secondary-btn" onclick="window.print()">🖨 Print Report</button>
+            </div>
+          </div>
+          <div id="reportContent" class="report-reader"></div>
+        </section>
+      </section>
+
+      <section id="part1" class="page">
+        <section id="research" class="insight-section">
+          <div class="section-head">
+            <h2>Market Research Intelligence</h2>
+            <p>Primary evidence from 20 semi-structured interviews conducted across Lahore target clusters.</p>
+          </div>
+
+          <div class="content-grid two-col">
+            <article class="content-card">
+              <h3>Interview Sample Composition</h3>
+              <ul class="executive-list">
+                <li>Total respondents: 20</li>
+                <li>Students: 12 (UCP and nearby campuses)</li>
+                <li>Office employees: 5 (Gulberg and DHA corridors)</li>
+                <li>Families: 3 (evening and weekend consumers)</li>
+              </ul>
+              <p>
+                Sampling deliberately balanced habitual weekday buyers with quality-sensitive evening buyers to model both high-frequency
+                and higher-ticket demand windows.
+              </p>
+            </article>
+            <article class="content-card">
+              <h3>Core Interview Findings</h3>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Insight Theme</th>
+                    <th>Evidence</th>
+                    <th>Strategic Implication</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Hygiene trust</td>
+                    <td>18 mentions</td>
+                    <td>Visible hygiene protocol and branded packaging required</td>
+                  </tr>
+                  <tr>
+                    <td>Peak lunch</td>
+                    <td>1:00 PM - 3:00 PM</td>
+                    <td>UCP deployment and pre-order batching at noon</td>
+                  </tr>
+                  <tr>
+                    <td>Peak evening</td>
+                    <td>5:00 PM - 8:00 PM</td>
+                    <td>Gulberg/DHA shift for post-work traffic capture</td>
+                  </tr>
+                  <tr>
+                    <td>Willingness to pay</td>
+                    <td>PKR 300 - 500</td>
+                    <td>Menu engineered around strong value in this bracket</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+          </div>
+
+          <div class="content-card">
+            <h3>STP Framework Snapshot</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Component</th>
+                  <th>Definition</th>
+                  <th>Execution Focus</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Segmentation</td>
+                  <td>Students, office workers, and social evening explorers</td>
+                  <td>Behavioral frequency + budget + convenience sensitivity</td>
+                </tr>
+                <tr>
+                  <td>Targeting</td>
+                  <td>Primary: Students; Secondary: Office workers; Tertiary: Late-night explorers</td>
+                  <td>Two time-window model with campus-to-city mobility</td>
+                </tr>
+                <tr>
+                  <td>Positioning</td>
+                  <td>Fast gourmet street bites with hygiene transparency</td>
+                  <td>Premium experience at everyday urban price points</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="content-card">
+            <h3>Business Model Canvas Summary</h3>
+            <div class="canvas-summary-grid">
+              <div><h4>Value Proposition</h4><p>Flavor-rich, hygienic, rapid-service street meals priced for repeat buying.</p></div>
+              <div><h4>Customer Segments</h4><p>Campus lunch buyers, office commuters, social evening diners.</p></div>
+              <div><h4>Channels</h4><p>Instagram, WhatsApp pre-orders, on-ground sampling, influencer micro-content.</p></div>
+              <div><h4>Customer Relationships</h4><p>Chat-assisted ordering, loyalty card, community hashtag engagement.</p></div>
+              <div><h4>Revenue Streams</h4><p>A-la-carte menu, combos, high-margin add-ons, repeat visits.</p></div>
+              <div><h4>Key Resources</h4><p>Mobile truck, prep workflow, branded packaging, social media assets.</p></div>
+              <div><h4>Key Activities</h4><p>Daily location optimization, quality control, content cadence, conversion tracking.</p></div>
+              <div><h4>Key Partners</h4><p>Local suppliers, photo-video vendors, campus touchpoints, nano-influencers.</p></div>
+              <div><h4>Cost Structure</h4><p>Ingredients, labor, fuel, media spend, packaging, campaign production.</p></div>
+            </div>
+          </div>
+
+          <div class="chart-grid four-up">
+            <article class="chart-card">
+              <h3>Respondent Mix</h3>
+              <canvas id="researchRespondents"></canvas>
+            </article>
+            <article class="chart-card">
+              <h3>Food Preference</h3>
+              <canvas id="foodPreference"></canvas>
+            </article>
+            <article class="chart-card">
+              <h3>Meal Timing</h3>
+              <canvas id="mealTiming"></canvas>
+            </article>
+            <article class="chart-card">
+              <h3>Price Sensitivity</h3>
+              <canvas id="priceSensitivity"></canvas>
+            </article>
+          </div>
+        </section>
+
+        <section id="brand" class="insight-section">
+          <div class="section-head">
+            <h2>Brand Architecture &amp; Product Economics</h2>
+            <p>Zing &amp; Zest aligns menu engineering with identity consistency and category-level differentiation.</p>
+          </div>
+
+          <div class="content-grid two-col">
+            <article class="content-card">
+              <h3>Core Menu Pricing</h3>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Zing Classic</td><td>Rs. 280</td></tr>
+                  <tr><td>Smoky Grill</td><td>Rs. 380</td></tr>
+                  <tr><td>Zesty Shawarma</td><td>Rs. 250</td></tr>
+                  <tr><td>Double Bite</td><td>Rs. 350</td></tr>
+                  <tr><td>Plain Fries</td><td>Rs. 120</td></tr>
+                  <tr><td>Masala Crunch</td><td>Rs. 150</td></tr>
+                  <tr><td>Loaded Zing Fries</td><td>Rs. 200</td></tr>
+                  <tr><td>Drink Regular / Large</td><td>Rs. 80 / Rs. 120</td></tr>
+                </tbody>
+              </table>
+            </article>
+            <article class="content-card">
+              <h3>Combo Strategy</h3>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Combo</th>
+                    <th>Price</th>
+                    <th>Strategic Goal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Student Combo</td><td>Rs. 380</td><td>High-frequency lunch conversion</td></tr>
+                  <tr><td>Wrap Combo</td><td>Rs. 350</td><td>Value-focused office quick meal</td></tr>
+                  <tr><td>Loaded Combo</td><td>Rs. 550</td><td>Upsell through premium add-ons</td></tr>
+                  <tr><td>Friends Combo</td><td>Rs. 1,200</td><td>Group order ticket expansion</td></tr>
+                </tbody>
+              </table>
+            </article>
+          </div>
+
+          <div class="content-grid two-col">
+            <article class="content-card">
+              <h3>Brand Identity System</h3>
+              <ul class="executive-list">
+                <li>Primary orange: energy, appetite stimulation, immediate recall</li>
+                <li>Charcoal base: trust, modernity, operational credibility</li>
+                <li>Teal accent: freshness, balance, and hygiene confidence</li>
+                <li>Voice: bold, urban, reliable, and conversion-driven</li>
+              </ul>
+            </article>
+            <article class="content-card">
+              <h3>Category Positioning Matrix</h3>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Price Level</th>
+                    <th>Perceived Quality</th>
+                    <th>Opportunity for Zing &amp; Zest</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Campus Canteen</td>
+                    <td>Low</td>
+                    <td>Variable</td>
+                    <td>Win on consistency and hygiene</td>
+                  </tr>
+                  <tr>
+                    <td>Local Stall</td>
+                    <td>Low-Mid</td>
+                    <td>Mixed</td>
+                    <td>Differentiate with standardized taste</td>
+                  </tr>
+                  <tr>
+                    <td>Standard Burger Outlet</td>
+                    <td>Mid-High</td>
+                    <td>Strong</td>
+                    <td>Compete with speed and local relevance</td>
+                  </tr>
+                  <tr>
+                    <td>Premium Café</td>
+                    <td>High</td>
+                    <td>High</td>
+                    <td>Offer near-premium taste at lower price</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+          </div>
+
+          <div class="chart-grid two-up">
+            <article class="chart-card">
+              <h3>Positioning Map</h3>
+              <canvas id="positioningMap"></canvas>
+            </article>
+            <article class="content-card">
+              <h3>Strategic Brand Thesis</h3>
+              <p>
+                Zing &amp; Zest does not compete by being the cheapest or the most premium. It captures the under-served middle:
+                high-trust, high-flavor, fast delivery in a mobility-first format. This makes the brand naturally resilient to
+                canteen pricing pressure and premium café affordability gaps.
+              </p>
+              <p>
+                The architecture supports scalable replication across Lahore clusters without weakening perceived quality, enabling
+                a strong bridge from launch validation to multi-location growth.
+              </p>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section id="part4" class="page">
+        <section id="imc" class="insight-section">
+          <div class="section-head">
+            <h2>Integrated Marketing Communications</h2>
+            <p>Four-week activation strategy converting awareness into first-order and loyalty behavior.</p>
+          </div>
+
+          <div class="content-grid two-col">
+            <article class="content-card">
+              <h3>4-Week Campaign Budget (Rs. 45,150)</h3>
+              <table class="data-table">
+                <thead>
+                  <tr><th>Line Item</th><th>Allocation</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Meta Ads</td><td>Rs. 14,000</td></tr>
+                  <tr><td>Campus Sampling</td><td>Rs. 7,500</td></tr>
+                  <tr><td>Photo/Video Production</td><td>Rs. 5,000</td></tr>
+                  <tr><td>Influencer Outreach</td><td>Rs. 5,000</td></tr>
+                  <tr><td>Packaging Enhancements</td><td>Rs. 4,000</td></tr>
+                  <tr><td>Banners</td><td>Rs. 3,500</td></tr>
+                  <tr><td>Content Operations</td><td>Rs. 3,000</td></tr>
+                  <tr><td>Loyalty Printing</td><td>Rs. 1,000</td></tr>
+                  <tr><td>Contingency</td><td>Rs. 2,150</td></tr>
+                </tbody>
+              </table>
+            </article>
+            <article class="content-card">
+              <h3>Activation Windows &amp; Targets</h3>
+              <ul class="executive-list">
+                <li>UCP Main Gate: 12:00 PM - 3:00 PM</li>
+                <li>Gulberg Cluster: 5:00 PM - 10:00 PM</li>
+                <li>DHA Corridor: 1:00 PM - 2:00 PM and 6:00 PM - 9:00 PM</li>
+                <li>Campaign target: 5,000 impressions, 200 DMs, 100 customers on launch day</li>
+                <li>Hashtags: #ZingAndZest #ZingZestStreetBites #FreshFastFull #FoodTruckLahore #UCPEats</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="chart-grid two-up">
+            <article class="chart-card">
+              <h3>Budget Composition</h3>
+              <canvas id="imcBudget"></canvas>
+            </article>
+            <article class="chart-card">
+              <h3>AIDA Funnel Performance</h3>
+              <canvas id="aidaFunnel"></canvas>
+            </article>
+          </div>
+        </section>
+
+        <section id="intelligence" class="insight-section">
+          <div class="section-head">
+            <h2>Customer Personas — Deliverable</h2>
+            <p>Three AI-generated, field-validated personas from 20 semi-structured interviews (Assignment 1 evidence).</p>
+          </div>
+          <div id="personaCards" class="persona-showcase"></div>
+          <div class="persona-grid persona-charts">
+            <article class="persona-block"><h3>Behavior Radar — Student</h3><canvas id="radarP1"></canvas></article>
+            <article class="persona-block"><h3>Behavior Radar — Professional</h3><canvas id="radarP2"></canvas></article>
+            <article class="persona-block"><h3>Behavior Radar — Explorer</h3><canvas id="radarP3"></canvas></article>
+          </div>
+          <div class="chart-grid two-up">
+            <article class="chart-card">
+              <h3>Channel Preference by Persona</h3>
+              <canvas id="channelBarChart"></canvas>
+            </article>
+            <article class="chart-card">
+              <h3>Persona Value Concentration</h3>
+              <canvas id="personaValueChart"></canvas>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section id="part2" class="page">
+        <section id="forecast" class="insight-section">
+          <div class="section-head">
+            <h2>Forecasting Models — Deliverable</h2>
+            <p>Daily, weekly, and monthly predictive models with documented assumptions and scenario analysis.</p>
+          </div>
+
+          <div class="forecast-assumptions content-card">
+            <h3>Model Assumptions</h3>
+            <div class="assumption-pills">
+              <span>AOV Rs. 380</span><span>Day-1: 100 customers</span><span>6 days/week</span>
+              <span>Fixed Rs. 85K/mo</span><span>Variable Rs. 145/unit</span><span>Break-even: 359 units</span>
+              <span>UCP 12–3 PM</span><span>Gulberg 5–10 PM</span><span>DHA 1–2 &amp; 6–9 PM</span>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h3>Scenario Selector</h3>
+            <div class="scenario-switch">
+              <button class="ss-btn" data-scen="conservative">Conservative</button>
+              <button class="ss-btn active" data-scen="base">Base Case</button>
+              <button class="ss-btn" data-scen="optimistic">Optimistic</button>
+            </div>
+            <div class="scenario-kpis">
+              <article><p>Year-1 Revenue</p><h4 id="ssRev">Rs. 5.9M</h4></article>
+              <article><p>Break-even Month</p><h4 id="ssBe">Month 2</h4></article>
+              <article><p>Avg Customers/Month</p><h4 id="ssCust">1,200</h4></article>
+              <article><p>Net Profit Margin</p><h4 id="ssNpm">24%</h4></article>
+              <article><p>Avg MoM Growth</p><h4 id="ssMoM">12%</h4></article>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <h3>Period Navigation</h3>
+            <div class="period-tabs">
+              <button class="pt-btn active" data-period="daily">Daily</button>
+              <button class="pt-btn" data-period="weekly">Weekly</button>
+              <button class="pt-btn" data-period="monthly">Monthly</button>
+            </div>
+            <div id="pv-daily" class="period-view active-view">
+              <canvas id="dailyChart"></canvas>
+            </div>
+            <div id="pv-weekly" class="period-view">
+              <canvas id="weeklyChart"></canvas>
+            </div>
+            <div id="pv-monthly" class="period-view">
+              <canvas id="monthlyChart"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-grid two-up">
+            <article class="chart-card">
+              <h3>Break-even Analysis</h3>
+              <canvas id="breakevenChart"></canvas>
+            </article>
+            <article class="chart-card">
+              <h3>Three-Year Revenue Trajectory</h3>
+              <canvas id="threeYearChart"></canvas>
+            </article>
+          </div>
+
+          <div class="content-card">
+            <h3>Monthly Forecast Table</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Month</th>
+                  <th>Customers</th>
+                  <th>Revenue (Rs.)</th>
+                  <th>Growth %</th>
+                  <th>Seasonal Note</th>
+                  <th>Confidence Interval</th>
+                </tr>
+              </thead>
+              <tbody id="monthlyTbody"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section id="part3" class="page">
+        <section id="competitive" class="insight-section">
+          <div class="section-head">
+            <h2>Competitor Analysis Dashboard — Deliverable</h2>
+            <p>5 direct + 3 indirect competitors benchmarked across price, quality, hygiene, and digital presence.</p>
+          </div>
+
+          <div class="dashboard-kpi-row">
+            <article class="dkpi"><h3>5</h3><p>Direct Competitors</p></article>
+            <article class="dkpi"><h3>3</h3><p>Indirect Competitors</p></article>
+            <article class="dkpi"><h3>Rs. 280</h3><p>Market Avg Price</p></article>
+            <article class="dkpi"><h3>4.6★</h3><p>Our Target Rating</p></article>
+            <article class="dkpi"><h3>Rs. 380</h3><p>Our Avg Price</p></article>
+          </div>
+
+          <div class="content-card">
+            <h3>Competitor Benchmark Matrix</h3>
+            <table class="data-table">
+              <thead>
+                <tr><th>Competitor</th><th>Type</th><th>Avg Price</th><th>Rating</th><th>Hygiene</th><th>Threat</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>UCP Campus Canteen</td><td><span class="tag direct">Direct</span></td><td>Rs. 200</td><td>3.2★</td><td>Low</td><td><span class="tag medium">Medium</span></td></tr>
+                <tr><td>Local Shawarma Stalls</td><td><span class="tag direct">Direct</span></td><td>Rs. 175</td><td>3.4★</td><td>Low</td><td><span class="tag high">High</span></td></tr>
+                <tr><td>Local Burger Stalls</td><td><span class="tag direct">Direct</span></td><td>Rs. 265</td><td>3.6★</td><td>Medium</td><td><span class="tag high">High</span></td></tr>
+                <tr><td>Standard Outlets (KFC tier)</td><td><span class="tag direct">Direct</span></td><td>Rs. 450</td><td>4.2★</td><td>High</td><td><span class="tag medium">Medium</span></td></tr>
+                <tr><td>Premium Cafés</td><td><span class="tag indirect">Indirect</span></td><td>Rs. 850</td><td>4.5★</td><td>High</td><td><span class="tag low">Low</span></td></tr>
+                <tr><td>Foodpanda / Cheetay</td><td><span class="tag indirect">Indirect</span></td><td>Rs. 350</td><td>3.7★</td><td>Medium</td><td><span class="tag high">High</span></td></tr>
+                <tr class="highlight-row"><td><strong>⭐ Zing &amp; Zest (Us)</strong></td><td><span class="tag us">Target</span></td><td><strong>Rs. 380</strong></td><td><strong>4.6★</strong></td><td><strong>Very High</strong></td><td><span class="tag us">Opportunity</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="content-grid two-col">
+            <article class="content-card">
+              <h3>Competitive Universe</h3>
+              <ul class="executive-list">
+                <li>Campus Canteen (price-led convenience baseline)</li>
+                <li>Local Stall (taste-first but quality variability)</li>
+                <li>Standard Burger Outlet (brand scale, higher pricing)</li>
+                <li>Premium Café (experience heavy, premium ticket)</li>
+                <li>Foodpanda and aggregators (indirect convenience substitute)</li>
+              </ul>
+            </article>
+            <article class="content-card">
+              <h3>SWOT Snapshot</h3>
+              <div class="swot-grid">
+                <div><h4>Strengths</h4><p>Hygiene trust, differentiated flavor profile, mobility advantage.</p></div>
+                <div><h4>Weaknesses</h4><p>Single truck capacity, early brand awareness constraints.</p></div>
+                <div><h4>Opportunities</h4><p>Campus scale-up, office cluster penetration, delivery partnerships.</p></div>
+                <div><h4>Threats</h4><p>Price wars, weather disruptions, algorithmic delivery competition.</p></div>
+              </div>
+            </article>
+          </div>
+
+          <div class="chart-grid two-up">
+            <article class="chart-card">
+              <h3>Competitor Capability Radar</h3>
+              <canvas id="competitorRadar"></canvas>
+            </article>
+            <article class="chart-card">
+              <h3>Position Benchmark</h3>
+              <canvas id="positionChart"></canvas>
+            </article>
+          </div>
+
+          <div class="chart-grid two-up">
+            <article class="chart-card">
+              <h3>Social Presence Index</h3>
+              <canvas id="socialChart"></canvas>
+            </article>
+            <article class="chart-card">
+              <h3>Sentiment Distribution</h3>
+              <canvas id="sentimentChart"></canvas>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section id="part5" class="page">
+        <section id="automation" class="insight-section">
+          <div class="section-head">
+            <h2>Automation &amp; Lifecycle Orchestration</h2>
+            <p>Retention-first growth engine designed around rapid service, chat conversion, and loyalty recurrence.</p>
+          </div>
+
+          <div class="content-card journey-deliverable">
+            <div class="section-head-inline">
+              <h3>Customer Journey Map — Deliverable</h3>
+              <span class="deliverable-tag">6 Stages · AIDA Aligned</span>
+            </div>
+            <div class="journey-pipeline" id="journeyPipeline">
+              <article class="jp-stage" data-stage="1">
+                <div class="jp-num">01</div>
+                <div class="jp-icon">👁️</div>
+                <h4>Awareness</h4>
+                <p class="jp-action">Teaser reels, campus banners, influencer stories</p>
+                <div class="jp-metric">5,000 impressions</div>
+                <div class="jp-channel">Instagram · Facebook</div>
+              </article>
+              <div class="jp-arrow">→</div>
+              <article class="jp-stage" data-stage="2">
+                <div class="jp-num">02</div>
+                <div class="jp-icon">💭</div>
+                <h4>Consideration</h4>
+                <p class="jp-action">Menu polls, BTS videos, peer reviews</p>
+                <div class="jp-metric">500 profile visits</div>
+                <div class="jp-channel">Instagram · WhatsApp</div>
+              </article>
+              <div class="jp-arrow">→</div>
+              <article class="jp-stage" data-stage="3">
+                <div class="jp-num">03</div>
+                <div class="jp-icon">🛒</div>
+                <h4>Purchase</h4>
+                <p class="jp-action">Campus sampling, DM pre-order, launch day</p>
+                <div class="jp-metric">100 Day-1 customers</div>
+                <div class="jp-channel">On-ground · Instagram</div>
+              </article>
+              <div class="jp-arrow">→</div>
+              <article class="jp-stage" data-stage="4">
+                <div class="jp-num">04</div>
+                <div class="jp-icon">⭐</div>
+                <h4>Experience</h4>
+                <p class="jp-action">Fast handoff, branded packaging, taste consistency</p>
+                <div class="jp-metric">&lt; 5 min wait</div>
+                <div class="jp-channel">Truck window · QR feedback</div>
+              </article>
+              <div class="jp-arrow">→</div>
+              <article class="jp-stage" data-stage="5">
+                <div class="jp-num">05</div>
+                <div class="jp-icon">🔄</div>
+                <h4>Retention</h4>
+                <p class="jp-action">Loyalty card — 5th visit free above Rs. 300</p>
+                <div class="jp-metric">76% retention M12</div>
+                <div class="jp-channel">WhatsApp · Loyalty card</div>
+              </article>
+              <div class="jp-arrow">→</div>
+              <article class="jp-stage" data-stage="6">
+                <div class="jp-num">06</div>
+                <div class="jp-icon">📣</div>
+                <h4>Advocacy</h4>
+                <p class="jp-action">Story reposts, UGC, referral program</p>
+                <div class="jp-metric">972 advocates</div>
+                <div class="jp-channel">Instagram · Word of mouth</div>
+              </article>
+            </div>
+          </div>
+
+          <div class="content-grid two-col">
+            <article class="content-card">
+              <h3>Chatbot Demo</h3>
+              <div id="chatDemo" class="chat-demo">
+                <div class="msg bot">
+                  <div class="msg-bubble">
+                    Welcome to Zing &amp; Zest support. Choose an option to simulate quick customer assistance.
+                  </div>
+                </div>
+                <div class="chat-options">
+                  <button class="chat-opt" onclick="chatDemo('location')">📍 Location</button>
+                  <button class="chat-opt" onclick="chatDemo('menu')">🍜 Menu</button>
+                  <button class="chat-opt" onclick="chatDemo('order')">📋 Order</button>
+                  <button class="chat-opt" onclick="chatDemo('loyalty')">⭐ Rewards</button>
+                </div>
+              </div>
+            </article>
+            <article class="content-card">
+              <h3>Loyalty Program Economics</h3>
+              <ul class="executive-list">
+                <li>Enrollment at first purchase and digital stamp registration</li>
+                <li>Qualifying threshold: orders above Rs. 300</li>
+                <li>Reward trigger: 5th visit free meal</li>
+                <li>Expected effect: higher repeat frequency and lower churn</li>
+                <li>Campaign budget line for program materials: Rs. 1,000</li>
+              </ul>
+              <p>
+                The loyalty mechanism monetizes customer trust built through consistency and hygiene by converting occasional buyers
+                into predictable monthly cohorts.
+              </p>
+            </article>
+          </div>
+
+          <div class="chart-grid two-up">
+            <article class="chart-card">
+              <h3>Automation ROI Multiples</h3>
+              <canvas id="roiChart"></canvas>
+            </article>
+            <article class="chart-card">
+              <h3>Retention Lift vs Non-Automation</h3>
+              <canvas id="retentionChart"></canvas>
+            </article>
+          </div>
+
+          <div class="content-card">
+            <h3>ROI Calculator</h3>
+            <div class="roi-calculator-grid">
+              <div class="slider-block">
+                <label for="slSm">Social Media Spend</label>
+                <input id="slSm" type="range" min="0" max="30000" step="500" value="12000" />
+                <p id="rcvSm">Rs. 12,000</p>
+              </div>
+              <div class="slider-block">
+                <label for="slInf">Influencer Spend</label>
+                <input id="slInf" type="range" min="0" max="20000" step="500" value="5000" />
+                <p id="rcvInf">Rs. 5,000</p>
+              </div>
+              <div class="slider-block">
+                <label for="slEv">Event Spend</label>
+                <input id="slEv" type="range" min="0" max="20000" step="500" value="7500" />
+                <p id="rcvEv">Rs. 7,500</p>
+              </div>
+              <div class="slider-block">
+                <label for="slWa">WhatsApp Automation</label>
+                <input id="slWa" type="range" min="0" max="10000" step="250" value="3000" />
+                <p id="rcvWa">Rs. 3,000</p>
+              </div>
+            </div>
+            <div class="roi-output-grid">
+              <article><h4 id="roiPct">0%</h4><p>Estimated ROI</p></article>
+              <article><h4 id="rcReach">0</h4><p>Estimated Reach</p></article>
+              <article><h4 id="rcConv">0</h4><p>Estimated Conversions</p></article>
+              <article><h4 id="rcRevOut">Rs. 0</h4><p>Estimated Revenue</p></article>
+              <article><h4 id="rcTotalBudget">Rs. 0</h4><p>Total Budget</p></article>
+            </div>
+            <div class="gauge-wrap">
+              <svg viewBox="0 0 100 50" role="img" aria-label="ROI gauge">
+                <path d="M10 45 A40 40 0 0 1 90 45" stroke="rgba(255,255,255,0.15)" stroke-width="8" fill="none"></path>
+                <path id="gaugePath" d="M10 45 A40 40 0 0 1 90 45" stroke="#0d9488" stroke-width="8" fill="none" stroke-dasharray="251.2" stroke-dashoffset="251.2"></path>
+              </svg>
+            </div>
+          </div>
+        </section>
+
+        <section id="crisis" class="insight-section">
+          <div class="section-head">
+            <h2>Recovery Strategy — Deliverable</h2>
+            <p>25% sales drop scenario with AI-diagnosed root causes and three-phase recovery plan.</p>
+          </div>
+
+          <div class="crisis-banner">
+            <div class="cb-icon">⚠️</div>
+            <div class="cb-text">
+              <h3>Scenario: Month 3 Revenue Drop</h3>
+              <p>Forecast Rs. 810K → Actual Rs. 540K (−25%) · AI confidence-weighted RCA completed</p>
+            </div>
+            <div class="cb-stats">
+              <div><strong>−25%</strong><span>Revenue Gap</span></div>
+              <div><strong>3 mo</strong><span>Recovery Window</span></div>
+              <div><strong>Rs. 792K</strong><span>Month 6 Target</span></div>
+            </div>
+          </div>
+
+          <div class="recovery-phases">
+            <article class="rp-card rp-immediate">
+              <div class="rp-label">Phase 1 · Immediate</div>
+              <h4>Days 1–7</h4>
+              <ul>
+                <li>WhatsApp flash promo: 15% off Student Combo</li>
+                <li>Launch "Study Fuel" exam-season bundle</li>
+                <li>3× daily Instagram stories with location pins</li>
+                <li>Weather contingency: UCP covered-area parking</li>
+              </ul>
+              <div class="rp-outcome">Target: Stop decline · Stabilize at Rs. 540K</div>
+            </article>
+            <article class="rp-card rp-tactical">
+              <div class="rp-label">Phase 2 · Tactical</div>
+              <h4>Weeks 2–4</h4>
+              <ul>
+                <li>Refresh Meta ads with UGC from nano-influencer</li>
+                <li>Referral program: free fries for both friends</li>
+                <li>Extend Gulberg evening service window</li>
+                <li>UCP society event branded sampling</li>
+              </ul>
+              <div class="rp-outcome">Target: Rs. 594K (+10%) by Month 4</div>
+            </article>
+            <article class="rp-card rp-strategic">
+              <div class="rp-label">Phase 3 · Strategic</div>
+              <h4>Months 2–3</h4>
+              <ul>
+                <li>Pre-order lunch slots to eliminate queue friction</li>
+                <li>Foodpanda listing with launch-week discount</li>
+                <li>Promote higher-margin Loaded Combo (Rs. 550)</li>
+                <li>Footfall heatmap for second location evaluation</li>
+              </ul>
+              <div class="rp-outcome">Target: Rs. 792K (+10%) by Month 6</div>
+            </article>
+          </div>
+
+          <div class="content-card">
+            <h3>Root Cause Analysis</h3>
+            <div class="rca-grid">
+              <article class="rca-card">
+                <h4>Demand Shock</h4>
+                <p>Sudden reduction in footfall due to exam season and weather volatility.</p>
+                <div class="rca-conf-bar"><span style="width: 82%"></span></div>
+              </article>
+              <article class="rca-card">
+                <h4>Channel Fatigue</h4>
+                <p>Declining ad response from creative repetition and lower engagement freshness.</p>
+                <div class="rca-conf-bar"><span style="width: 76%"></span></div>
+              </article>
+              <article class="rca-card">
+                <h4>Competitive Pressure</h4>
+                <p>Price-led campaigns from nearby stalls and aggregator discounts.</p>
+                <div class="rca-conf-bar"><span style="width: 71%"></span></div>
+              </article>
+              <article class="rca-card">
+                <h4>Operational Friction</h4>
+                <p>Queue-time spikes during peak windows reducing repeat intent.</p>
+                <div class="rca-conf-bar"><span style="width: 64%"></span></div>
+              </article>
+            </div>
+          </div>
+
+          <div class="chart-grid two-up">
+            <article class="chart-card">
+              <h3>25% Drop Scenario Curve</h3>
+              <canvas id="crisisChart"></canvas>
+            </article>
+            <article class="chart-card">
+              <h3>Recovery Trajectory</h3>
+              <canvas id="recoveryChart"></canvas>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section id="transparency" class="page">
+        <section id="methodology" class="insight-section">
+          <div class="section-head">
+            <h2>AI Methodology — Prompts &amp; Screenshots</h2>
+            <p>Documented AI workflow, prompt library, interaction evidence, and 300-word reflection.</p>
+          </div>
+
+          <div id="aiPromptGallery" class="ai-gallery"></div>
+
+          <div class="content-grid two-col">
+            <article class="content-card">
+              <h3>AI Tools Used</h3>
+              <table class="data-table">
+                <thead>
+                  <tr><th>Tool</th><th>Purpose</th><th>Output Type</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Large Language Models</td><td>Insight synthesis and persona structuring</td><td>Framework drafts</td></tr>
+                  <tr><td>Spreadsheet Analytics</td><td>Budget and forecast consistency checks</td><td>Numeric validation</td></tr>
+                  <tr><td>Charting Engine</td><td>Scenario visualization and comparative storytelling</td><td>Decision dashboards</td></tr>
+                  <tr><td>Prompt Templates</td><td>Controlled question framing and repeatability</td><td>Standardized outputs</td></tr>
+                </tbody>
+              </table>
+            </article>
+            <article class="content-card">
+              <h3>Prompt Examples</h3>
+              <ul class="executive-list">
+                <li>"Synthesize 20 interview responses into behavior-led segments with pricing thresholds."</li>
+                <li>"Build a 4-week IMC budget split totaling Rs. 45,150 with conversion logic."</li>
+                <li>"Create a 25% sales shock recovery roadmap with month-by-month milestones."</li>
+                <li>"Model three-year revenue and margin path for a Lahore mobile food format."</li>
+              </ul>
+            </article>
+          </div>
+
+          <article class="content-card">
+            <h3>Reflection (Approx. 300 Words)</h3>
+            <p>
+              This project demonstrated that marketing intelligence becomes materially more valuable when qualitative signals and
+              quantitative controls are integrated into one operating view. The interview process provided actionable evidence on what
+              customers in Lahore actually optimize for: hygiene trust, speed, and price fairness. Rather than treating these insights
+              as static observations, we translated them into product design, pricing architecture, and route scheduling decisions. The
+              resulting platform shows that strategy quality improves when every recommendation is linked to a concrete behavior pattern.
+            </p>
+            <p>
+              AI support accelerated synthesis and improved clarity across assignments, but value came only when prompts were disciplined
+              and outputs were cross-checked against field evidence. We observed that broad prompts generated generic advice, while
+              tightly scoped prompts anchored to location, time slot, and price bands produced far more usable insights. This reinforced
+              a key managerial lesson: AI does not replace market understanding; it amplifies it when analysts define context precisely.
+            </p>
+            <p>
+              The dashboard design reflects an executive communication objective. Instead of isolated documents, decision makers can
+              evaluate research quality, brand direction, campaign economics, and risk controls in one narrative flow. This creates
+              alignment between tactical execution and strategic intent. The forecasting and crisis modules further demonstrate that
+              growth plans must include uncertainty handling, not just optimistic projections. Building these contingencies strengthened
+              confidence in operational realism.
+            </p>
+            <p>
+              Overall, the most important takeaway is process rigor: collect primary data, structure assumptions, test scenarios, and
+              communicate with precision. For Zing &amp; Zest Street Bites, that rigor translates into a launch plan that is not only
+              creative, but also measurable, adaptable, and investment-ready.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <h3>Validation Controls</h3>
+            <ul class="executive-list">
+              <li>Interview counts reconciled with segment distribution totals</li>
+              <li>Budget lines audited to exact Rs. 45,150 total</li>
+              <li>Forecast assumptions tied to AOV and location windows</li>
+              <li>Competitive categories aligned with Assignment 2 positioning logic</li>
+              <li>Crisis scenario tied to explicit 25% sales drop parameter</li>
+            </ul>
+          </article>
+        </section>
+      </section>
+
+      <section id="conclusion" class="page">
+        <section class="insight-section">
+          <div class="section-head">
+            <h2>Executive Conclusion</h2>
+            <p>
+              Zing &amp; Zest Street Bites enters Lahore with a validated demand thesis, disciplined GTM plan, and measurable
+              path from launch traction to scalable unit economics.
+            </p>
+          </div>
+          <div class="content-grid two-col">
+            <article class="content-card">
+              <h3>Why This Model Is Investable</h3>
+              <ul class="executive-list">
+                <li>Evidence-backed segment focus and pricing fit</li>
+                <li>Compact budget with clearly linked conversion outcomes</li>
+                <li>Mobility-led route economics for demand capture</li>
+                <li>Embedded loyalty and automation for repeat growth</li>
+                <li>Operational contingency design under downside scenarios</li>
+              </ul>
+            </article>
+            <article class="content-card">
+              <h3>12-Month Strategic Priorities</h3>
+              <ul class="executive-list">
+                <li>Scale student base while lifting office-worker AOV</li>
+                <li>Institutionalize quality and hygiene SOP dashboard</li>
+                <li>Expand digital ordering and retention automations</li>
+                <li>Launch delivery adjacency after stable core operations</li>
+                <li>Prepare second-truck expansion decision gate by Year 2</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div id="presentOverlay" class="presentation-overlay" aria-hidden="true">
+    <div class="po-header">
+      <p id="pocTitle">Cover · Zing &amp; Zest Street Bites</p>
+      <p id="pocCounter">1 / 8</p>
+      <button class="icon-btn" onclick="exitPresentation()" aria-label="Exit presentation">✕</button>
+    </div>
+    <div class="po-body">
+      <article class="po-slide active">
+        <h2>Zing &amp; Zest Street Bites</h2>
+        <p>Fresh. Fast. Full of Flavor.</p>
+        <p>Lahore launch strategy with integrated customer, brand, and growth intelligence.</p>
+      </article>
+      <article class="po-slide">
+        <h2>Customer Intelligence</h2>
+        <p>20 interviews reveal hygiene trust and time-window demand as core growth drivers.</p>
+      </article>
+      <article class="po-slide">
+        <h2>Forecast Confidence</h2>
+        <p>Scenario model indicates break-even in month 2 with strong Year-1 revenue momentum.</p>
+      </article>
+      <article class="po-slide">
+        <h2>Competitive Position</h2>
+        <p>Differentiation anchored in quality consistency at affordable mid-tier pricing.</p>
+      </article>
+      <article class="po-slide">
+        <h2>Automation Lift</h2>
+        <p>Chat and loyalty systems improve recurrence and acquisition efficiency.</p>
+      </article>
+      <article class="po-slide">
+        <h2>Crisis Readiness</h2>
+        <p>25% drop response framework protects revenue trajectory under shocks.</p>
+      </article>
+      <article class="po-slide">
+        <h2>Methodological Integrity</h2>
+        <p>AI-assisted synthesis backed by primary evidence and budget-level validation.</p>
+      </article>
+      <article class="po-slide">
+        <h2>Investment Thesis</h2>
+        <p>A scalable street-food platform with disciplined economics and brand momentum.</p>
+      </article>
+    </div>
+    <div class="po-controls">
+      <button class="secondary-btn" onclick="slideNav(-1)">Previous</button>
+      <button class="secondary-btn" onclick="slideNav(1)">Next</button>
+      <button class="primary-btn" onclick="exitPresentation()">Exit</button>
+    </div>
+  </div>
+
+  <div class="fab">
+    <button id="fabMain" class="fab-main" aria-label="Open quick actions">＋</button>
+    <div id="fabItems" class="fab-items">
+      <button onclick="goTo('cover')">Overview</button>
+      <button onclick="goTo('part1')">Research</button>
+      <button onclick="goTo('part4')">IMC</button>
+      <button onclick="goTo('part2')">Forecast</button>
+      <button onclick="goTo('part3')">Competitive</button>
+      <button onclick="goTo('part5')">Automation</button>
+      <button onclick="goTo('transparency')">Methodology</button>
+    </div>
+  </div>
+
+  <footer class="platform-footer">
+    <p>
+      Team: Ahmad Yasin L1F22BSAI0052, Abdul Rehman L1F22BSAI0031, Eman Sarfraz L1F22BSAI0034, Nouman Zakar L1F22BSAI0048,
+      Ali Hassan L1F22BSAI0059. Dr. Shahjahan Masud, UCP, AIUE3013 Spring 2026
+    </p>
+  </footer>
+</body>
+</html>
