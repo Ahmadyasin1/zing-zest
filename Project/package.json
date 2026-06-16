@@ -1,0 +1,9 @@
+{
+  "name": "zing-zest-redirect",
+  "private": true,
+  "scripts": {
+    "dev": "cd .. && npm run dev",
+    "build": "cd .. && npm run build",
+    "start": "cd .. && npm run start"
+  }
+}

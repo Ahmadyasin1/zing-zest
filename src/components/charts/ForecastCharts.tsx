@@ -35,7 +35,7 @@ export function ForecastCharts() {
           ].map((k) => (
             <div key={k.l} className="rounded-xl bg-white/5 p-3 text-center">
               <p className="text-lg font-bold text-orange-400">{k.v}</p>
-              <p className="text-[0.65rem] uppercase text-stone-500">{k.l}</p>
+              <p className="text-[0.65rem] uppercase text-muted">{k.l}</p>
             </div>
           ))}
         </div>
@@ -118,7 +118,7 @@ export function ForecastCharts() {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-white/10 text-stone-500">
+              <tr className="border-b border-white/10 text-muted">
                 <th className="p-2">Month</th><th className="p-2">Customers</th><th className="p-2">Revenue</th><th className="p-2">Growth</th><th className="p-2">Note</th><th className="p-2">CI</th>
               </tr>
             </thead>
@@ -129,7 +129,7 @@ export function ForecastCharts() {
                   <td className="p-2">{m.c.toLocaleString()}</td>
                   <td className="p-2 text-orange-400">{formatRs(m.rev)}</td>
                   <td className={`p-2 ${m.g >= 0 ? 'text-teal-400' : 'text-rose-400'}`}>{m.g >= 0 ? '+' : ''}{m.g}%</td>
-                  <td className="p-2 text-stone-400">{m.s}</td>
+                  <td className="p-2 text-muted">{m.s}</td>
                   <td className="p-2 text-teal-400">±{m.ci}%</td>
                 </tr>
               ))}

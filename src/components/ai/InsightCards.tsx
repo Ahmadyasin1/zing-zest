@@ -58,16 +58,16 @@ export function InsightCards() {
   const trends = ZZ.forecast.monthly.filter((m) => Math.abs(m.g) >= 10).slice(0, 4);
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
       <GlassCard premium>
-        <div className="mb-4 flex items-center justify-between">
+        <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl highlight-orange">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--brand-orange-soft)] to-[var(--brand-violet-soft)] shadow-[0_0_24px_var(--glow-orange)]">
               <Sparkles className="accent-orange h-5 w-5" />
             </div>
             <div>
-              <p className="eyebrow mb-0.5">Live AI</p>
-              <h3 className="font-display font-extrabold">Insight Engine</h3>
+              <p className="eyebrow mb-1">Live AI</p>
+              <h3 className="font-display text-lg font-extrabold tracking-tight">Insight Engine</h3>
             </div>
           </div>
           <Btn onClick={runSummary} disabled={loading === 'summary'}>
@@ -75,7 +75,7 @@ export function InsightCards() {
           </Btn>
         </div>
         {summary && (
-          <div className="highlight-orange rounded-xl p-4 text-sm leading-relaxed whitespace-pre-wrap">{summary}</div>
+          <div className="rounded-xl border border-[var(--border-accent)] bg-gradient-to-br from-[var(--brand-orange-soft)] to-transparent p-5 text-sm leading-relaxed whitespace-pre-wrap">{summary}</div>
         )}
       </GlassCard>
 

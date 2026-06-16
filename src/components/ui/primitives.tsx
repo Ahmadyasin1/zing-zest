@@ -47,6 +47,10 @@ export function FadeUpItem({
   );
 }
 
+export function SectionDivider() {
+  return <div className="section-divider" aria-hidden />;
+}
+
 export function GlassCard({
   children,
   className,
@@ -65,8 +69,8 @@ export function GlassCard({
       onClick={onClick}
       onKeyDown={onClick ? (e) => (e.key === 'Enter' || e.key === ' ') && onClick() : undefined}
       className={cn(
-        'rounded-2xl p-5',
-        premium ? 'glass-premium card-hover' : 'glass card-hover',
+        'rounded-xl p-5 md:p-6',
+        premium ? 'glass-ultra glass-premium card-hover' : 'glass card-hover',
         onClick && 'cursor-pointer',
         className,
       )}
@@ -86,11 +90,11 @@ export function SectionHead({
   eyebrow?: string;
 }) {
   return (
-    <div className="mb-8">
-      {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
-      <h2 className="font-display text-2xl font-extrabold tracking-tight md:text-3xl lg:text-4xl">{title}</h2>
-      <div className="section-rule mt-4 max-w-xs" />
-      {subtitle && <p className="text-muted mt-4 max-w-3xl text-sm leading-relaxed md:text-base">{subtitle}</p>}
+    <div className="mb-10">
+      {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
+      <h2 className="section-title-ultra text-gradient">{title}</h2>
+      <div className="section-rule mt-5 max-w-sm" />
+      {subtitle && <p className="text-muted mt-5 max-w-3xl text-sm leading-relaxed md:text-base">{subtitle}</p>}
     </div>
   );
 }
@@ -99,15 +103,15 @@ export function KpiCard({ value, label, index }: { value: string; label: string;
   return (
     <motion.div
       variants={fadeUp}
-      className="kpi-glow card-hover rounded-2xl p-5 text-center"
+      className="kpi-glow card-hover rounded-2xl p-5 text-center md:p-6"
     >
       {index !== undefined && (
-        <span className="text-muted mb-2 block font-mono text-[0.6rem] tracking-widest">
+        <span className="text-muted mb-2 block font-mono text-[0.6rem] font-bold tracking-[0.2em]">
           {String(index + 1).padStart(2, '0')}
         </span>
       )}
       <p className="stat-value text-gradient">{value}</p>
-      <p className="text-muted mt-2 text-[0.7rem] leading-snug">{label}</p>
+      <p className="text-muted mt-2.5 text-[0.7rem] font-medium leading-snug">{label}</p>
     </motion.div>
   );
 }
@@ -129,13 +133,13 @@ export function DeliverableCard({
     <motion.button
       variants={fadeUp}
       onClick={onClick}
-      className="deliverable-card glass card-hover w-full rounded-xl p-4"
+      className="deliverable-card glass card-hover w-full rounded-2xl p-5"
     >
       <ArrowUpRight className="deliverable-arrow h-4 w-4" />
-      <span className="text-2xl">{icon}</span>
-      <h3 className="font-display mt-3 text-sm font-bold">{title}</h3>
-      <p className="mt-1 text-[0.68rem] leading-relaxed text-muted">{desc}</p>
-      <p className="accent-teal mt-3 text-[0.65rem] font-bold">{meta}</p>
+      <span className="text-2xl drop-shadow-sm">{icon}</span>
+      <h3 className="font-display mt-3 text-sm font-bold tracking-tight">{title}</h3>
+      <p className="mt-1.5 text-[0.68rem] leading-relaxed text-muted">{desc}</p>
+      <p className="accent-teal mt-3 text-[0.65rem] font-bold uppercase tracking-wide">{meta}</p>
     </motion.button>
   );
 }
@@ -176,7 +180,7 @@ export function Btn({
       disabled={disabled}
       onClick={onClick}
       className={cn(
-        'rounded-xl px-4 py-2.5 text-sm font-semibold transition-all disabled:opacity-50',
+        'inline-flex items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all disabled:opacity-50',
         variant === 'primary' && 'btn-primary text-white',
         variant === 'secondary' && 'btn-secondary',
         variant === 'ghost' && 'text-muted hover:bg-[var(--brand-orange-soft)] hover:text-[var(--text-primary)]',

@@ -80,7 +80,7 @@ export async function POST(req: Request) {
       type === 'kpi'
         ? '**KPI Snapshot:** 20 interviews validate demand · Rs. 45,150 IMC budget · 100 Day-1 target · Rs. 5.9M Year-1 base · Break-even Month 2 · 24% margin · 3 personas · 6-stage journey · 3-phase recovery.'
         : `**Executive Summary (offline):**\n\n${REPORT.sections[0].body.slice(0, 600)}…\n\n_Live AI temporarily unavailable._`;
-    return jsonOk({ summary: offline, source: 'offline', notice: 'Live AI unavailable — showing offline summary.' });
+    return jsonOk({ summary: offline, source: 'offline', notice: 'Live AI unavailable - showing offline summary.' });
   }
 }
 

@@ -21,11 +21,12 @@ async function check(name, fn) {
   }
 }
 
-async function post(path, body) {
+async function post(path, body, timeoutMs = 120_000) {
   const res = await fetch(`${BASE}${path}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
+    signal: AbortSignal.timeout(timeoutMs),
   });
   const text = await res.text();
   let data;
@@ -100,23 +101,23 @@ await check('Persona matcher', async () => {
 });
 
 await check('Vision caption', async () => {
-  const d = await post('/api/ai/vision', { image: TINY_PNG, task: 'caption' });
+  const d = await post('/api/ai/vision', { image: TINY_PNG, task: 'caption' }, 180_000);
   if (!d.result?.length) throw new Error('no vision result');
   if (d.source === 'offline') throw new Error('vision offline');
   return `source=${d.source}, model=${d.model || 'n/a'}`;
 });
 
 await check('Object detection', async () => {
-  const d = await post('/api/ai/detect', { image: TINY_PNG });
+  const d = await post('/api/ai/detect', { image: TINY_PNG }, 180_000);
   if (!d.objects?.length) throw new Error('no objects');
   if (d.source === 'offline') throw new Error('detect offline');
   return `source=${d.source}, ${d.objects.length} object(s)`;
 });
 
 await check('Image generation', async () => {
-  const d = await post('/api/ai/image', { prompt: 'burger and fries on food truck counter', style: 'appetizing food photo' });
+  const d = await post('/api/ai/image', { prompt: 'burger and fries on food truck counter', style: 'appetizing food photo' }, 180_000);
   if (!d.image?.startsWith('data:image')) throw new Error('no image data URL');
-  return `model=${d.model || 'n/a'}`;
+  return `source=${d.source || 'huggingface'}, model=${d.model || 'n/a'}`;
 });
 
 const failed = results.filter((r) => !r.ok);

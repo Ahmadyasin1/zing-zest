@@ -1,14 +1,11 @@
 'use client';
 
-/** Fixed ambient background — animated orbs, grid, film grain */
+/** Soft warm ambient - clean food-brand background */
 export function AmbientLayer() {
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden>
-      <div className="ambient-orb ambient-orb-1" />
-      <div className="ambient-orb ambient-orb-2" />
-      <div className="ambient-orb ambient-orb-3" />
-      <div className="ambient-grid absolute inset-0" />
-      <div className="ambient-grain absolute inset-0" />
+      <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-orange-200/30 blur-3xl" />
+      <div className="absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-teal-200/20 blur-3xl" />
     </div>
   );
 }

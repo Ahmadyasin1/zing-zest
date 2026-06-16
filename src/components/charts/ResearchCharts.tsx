@@ -9,7 +9,7 @@ export function ResearchCharts() {
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
       <GlassCard>
-        <h3 className="mb-3 text-sm font-semibold text-stone-400">Interview Sample</h3>
+        <h3 className="mb-3 text-sm font-semibold text-muted">Interview Sample</h3>
         <Doughnut
           data={{
             labels: ['Students', 'Employees', 'Families'],
@@ -19,7 +19,7 @@ export function ResearchCharts() {
         />
       </GlassCard>
       <GlassCard>
-        <h3 className="mb-3 text-sm font-semibold text-stone-400">Food Preference</h3>
+        <h3 className="mb-3 text-sm font-semibold text-muted">Food Preference</h3>
         <Bar
           data={{
             labels: foodPreference.map((f) => f.item),
@@ -29,7 +29,7 @@ export function ResearchCharts() {
         />
       </GlassCard>
       <GlassCard>
-        <h3 className="mb-3 text-sm font-semibold text-stone-400">Meal Timing</h3>
+        <h3 className="mb-3 text-sm font-semibold text-muted">Meal Timing</h3>
         <PolarArea
           data={{
             labels: mealTiming.map((m) => m.window),
@@ -39,7 +39,7 @@ export function ResearchCharts() {
         />
       </GlassCard>
       <GlassCard>
-        <h3 className="mb-3 text-sm font-semibold text-stone-400">Price Sensitivity</h3>
+        <h3 className="mb-3 text-sm font-semibold text-muted">Price Sensitivity</h3>
         <Doughnut
           data={{
             labels: priceBands.map((p) => p.label),

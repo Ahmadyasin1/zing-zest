@@ -13,8 +13,8 @@ export const ZZ = {
     respondents: { students: 12, employees: 5, families: 3 },
     hygieneMentions: 18,
     priceBands: [
-      { label: 'PKR 300–500', pct: 65 },
-      { label: 'PKR 500–700', pct: 25 },
+      { label: 'PKR 300-500', pct: 65 },
+      { label: 'PKR 500-700', pct: 25 },
       { label: 'Below PKR 300', pct: 7 },
       { label: 'Above PKR 700', pct: 3 },
     ],
@@ -25,30 +25,50 @@ export const ZZ = {
       { item: 'Cold Drinks', pct: 8 },
     ],
     mealTiming: [
-      { window: 'Lunch (1–3 PM)', pct: 48 },
-      { window: 'Evening (5–8 PM)', pct: 38 },
+      { window: 'Lunch (1-3 PM)', pct: 48 },
+      { window: 'Evening (5-8 PM)', pct: 38 },
       { window: 'Late Afternoon', pct: 14 },
     ],
   },
   menu: {
     items: [
-      { name: 'Zing Classic Burger', price: 280 },
-      { name: 'Smoky Grill Burger', price: 380 },
-      { name: 'Zesty Chicken Shawarma', price: 250 },
-      { name: 'Double Bite Shawarma', price: 350 },
-      { name: 'Plain Fries', price: 120 },
-      { name: 'Masala Crunch Fries', price: 150 },
-      { name: 'Loaded Zing Fries', price: 200 },
-      { name: 'Cold Drink (Regular)', price: 80 },
-      { name: 'Cold Drink (Large)', price: 120 },
+      { name: 'Zing Classic Burger', price: 280, category: 'burgers' as const, desc: 'Juicy beef patty, fresh veggies, Zing sauce', image: '/food/burger.png', tag: 'Classic' },
+      { name: 'Smoky Grill Burger', price: 380, category: 'burgers' as const, desc: 'Char-grilled patty, cheddar, smoky mayo', image: '/food/burger.png', tag: 'Bestseller' },
+      { name: 'Zesty Chicken Shawarma', price: 250, category: 'shawarma' as const, desc: 'Marinated chicken, garlic sauce, pickles', image: '/food/shawarma.png', tag: 'Popular' },
+      { name: 'Double Bite Shawarma', price: 350, category: 'shawarma' as const, desc: 'Double chicken portion, extra zesty sauce', image: '/food/shawarma.png', tag: 'Hearty' },
+      { name: 'Plain Fries', price: 120, category: 'sides' as const, desc: 'Golden crispy fries, lightly salted', image: '/food/fries.png' },
+      { name: 'Masala Crunch Fries', price: 150, category: 'sides' as const, desc: 'Spiced masala dust, extra crunch', image: '/food/fries.png', tag: 'Spicy' },
+      { name: 'Loaded Zing Fries', price: 200, category: 'sides' as const, desc: 'Cheese, sauce, herbs - fully loaded', image: '/food/fries.png', tag: 'Loaded' },
+      { name: 'Cold Drink (Regular)', price: 80, category: 'drinks' as const, desc: 'Chilled soft drink - regular size', image: '/food/drink.png' },
+      { name: 'Cold Drink (Large)', price: 120, category: 'drinks' as const, desc: 'Ice-cold refreshment - large size', image: '/food/drink.png' },
+      // ── Premium signature line (new menu) ──
+      { name: 'The Zesty Classic', price: 650, category: 'burgers' as const, desc: 'Angus beef, cheddar, fresh LTO, signature Zing sauce', image: '/food/burger.png', tag: 'Signature' },
+      { name: 'Spicy Street Blaze', price: 620, category: 'burgers' as const, desc: 'Buttermilk fried chicken, pepperjack, jalapeños, sriracha-lime mayo', image: '/food/burger.png', tag: 'Spicy' },
+      { name: 'Veggie Vibe Burger', price: 580, category: 'burgers' as const, desc: 'Plant-based patty, avocado, garden greens, teal-green aioli', image: '/food/burger.png', tag: 'Veg' },
+      { name: 'Zingy Chicken Shawarma', price: 550, category: 'shawarma' as const, desc: '24-hour marinated chicken, garlic sauce, pickles, fries inside', image: '/food/shawarma.png', tag: 'Signature' },
+      { name: 'Beef Street Wrap', price: 600, category: 'shawarma' as const, desc: 'Spicy ground beef, tahini, cucumber salad, red onion', image: '/food/shawarma.png', tag: 'Hearty' },
+      { name: 'Falafel Fresh Wrap', price: 520, category: 'shawarma' as const, desc: 'House falafel, hummus, fresh veggies, teal-green herb sauce', image: '/food/shawarma.png', tag: 'Veg' },
+      { name: 'Loaded Zest Fries', price: 450, category: 'sides' as const, desc: 'Cheese sauce, bacon bits, green onions, Zing sauce', image: '/food/fries.png', tag: 'Loaded' },
+      { name: 'Teal-Wave Fries', price: 480, category: 'sides' as const, desc: 'Truffle oil, parmesan, subtle teal-colored garlic dip', image: '/food/fries.png', tag: 'Premium' },
+      { name: 'Lemon Zest Cooler', price: 250, category: 'drinks' as const, desc: 'Berry-citrus refresher over crushed ice', image: '/food/drink.png', tag: 'Refresher' },
+      { name: 'Street Mango Shake', price: 350, category: 'drinks' as const, desc: 'Thick mango shake, real fruit, no syrups', image: '/food/drink.png', tag: 'Popular' },
+      { name: 'Iced Karak Chai', price: 220, category: 'drinks' as const, desc: 'Desi karak, chilled and creamy', image: '/food/drink.png' },
     ],
     combos: [
-      { name: 'Student Combo', price: 380, desc: 'Classic Burger + Fries + Drink' },
-      { name: 'Wrap Combo', price: 350, desc: 'Shawarma + Fries + Drink' },
-      { name: 'Loaded Combo', price: 550, desc: 'Smoky Grill + Loaded Fries + Drink' },
-      { name: 'Friends Combo', price: 1200, desc: '2 Burgers + 2 Shawarmas + 4 Fries' },
+      { name: 'Student Combo', price: 380, desc: 'Classic Burger + Fries + Drink', image: '/food/combo.png', tag: 'Top Pick' },
+      { name: 'Wrap Combo', price: 350, desc: 'Shawarma + Fries + Drink', image: '/food/combo.png' },
+      { name: 'Loaded Combo', price: 550, desc: 'Smoky Grill + Loaded Fries + Drink', image: '/food/combo.png', tag: 'Premium' },
+      { name: 'Friends Combo', price: 1200, desc: '2 Burgers + 2 Shawarmas + 4 Fries', image: '/food/combo.png', tag: 'Share' },
+      { name: 'Zesty Meal for One', price: 980, desc: 'Any signature burger + reg. fries + med. drink', image: '/food/combo.png', tag: 'Value' },
+      { name: 'Street Bites Feast', price: 1750, desc: 'Meal for Two - 2 wraps + large fries + 2 cold drinks', image: '/food/combo.png', tag: 'Meal for 2' },
     ],
     avgOrder: 380,
+    categories: [
+      { id: 'burgers', label: 'Burgers', emoji: '🍔' },
+      { id: 'shawarma', label: 'Shawarma', emoji: '🌯' },
+      { id: 'sides', label: 'Fries & Sides', emoji: '🍟' },
+      { id: 'drinks', label: 'Drinks', emoji: '🥤' },
+    ],
   },
   imc: {
     budgetTotal: 45150,
@@ -71,11 +91,11 @@ export const ZZ = {
       { stage: 'Action', value: 100 },
     ],
     locations: [
-      { name: 'UCP Main Gate', hours: '12:00 PM – 3:00 PM', segment: 'Students & Faculty' },
-      { name: 'Liberty / Gulberg III', hours: '5:00 PM – 10:00 PM', segment: 'Professionals & shoppers' },
-      { name: 'DHA Phase 5/6', hours: '1–2 PM & 6–9 PM', segment: 'Employees & residents' },
+      { name: 'UCP Main Gate', hours: '12:00 PM - 3:00 PM', segment: 'Students & Faculty' },
+      { name: 'Liberty / Gulberg III', hours: '5:00 PM - 10:00 PM', segment: 'Professionals & shoppers' },
+      { name: 'DHA Phase 5/6', hours: '1-2 PM & 6-9 PM', segment: 'Employees & residents' },
     ],
-    loyalty: '5th visit free — orders above Rs. 300 qualify for stamp',
+    loyalty: '5th visit free - orders above Rs. 300 qualify for stamp',
   },
   competitors: [
     { name: 'UCP Campus Canteen', type: 'Direct', price: 200, quality: 3.2, hygiene: 2.8 },
@@ -178,10 +198,29 @@ export const TEAM = [
 ] as const;
 
 export const TEAM_COMBINED = '/team/team-combined.png';
+export const FOOD_IMAGES = {
+  burger: '/food/burger.png',
+  shawarma: '/food/shawarma.png',
+  fries: '/food/fries.png',
+  drink: '/food/drink.png',
+  combo: '/food/combo.png',
+} as const;
+
+export const FLOATING_FOODS = [
+  { src: FOOD_IMAGES.burger, alt: 'Zing Classic Burger', className: 'float-food-1' },
+  { src: FOOD_IMAGES.shawarma, alt: 'Zesty Chicken Shawarma', className: 'float-food-2' },
+  { src: FOOD_IMAGES.fries, alt: 'Masala Crunch Fries', className: 'float-food-3' },
+  { src: FOOD_IMAGES.drink, alt: 'Cold Drink', className: 'float-food-4' },
+] as const;
+
 export const BRAND_LOGO = '/zing_zest_logo.png';
 
 export type PageId =
   | 'cover'
+  | 'live'
+  | 'recommend'
+  | 'account'
+  | 'inventory'
   | 'report'
   | 'part1'
   | 'part2'
@@ -192,17 +231,22 @@ export type PageId =
   | 'conclusion'
   | 'ai';
 
-export const NAV_ITEMS: { id: PageId; label: string; icon: string }[] = [
-  { id: 'cover', label: 'Overview', icon: '◆' },
-  { id: 'report', label: 'Executive Report', icon: '📄' },
+// `section` marks the start of a new sidebar group (label rendered above the item).
+export const NAV_ITEMS: { id: PageId; label: string; icon: string; section?: string }[] = [
+  { id: 'cover', label: 'Home & Menu', icon: '🏠', section: 'Platform' },
+  { id: 'live', label: 'Live Tracking', icon: '📍', section: 'Order & Track' },
+  { id: 'recommend', label: 'AI Recommendations', icon: '🎯' },
+  { id: 'account', label: 'Login / Sign Up', icon: '🔐' },
+  { id: 'inventory', label: 'Inventory', icon: '📦', section: 'Operations' },
+  { id: 'report', label: 'Executive Report', icon: '📄', section: 'Report & Analysis' },
   { id: 'part4', label: 'Personas & IMC', icon: '👥' },
   { id: 'part2', label: 'Forecasting', icon: '📈' },
   { id: 'part3', label: 'Competitors', icon: '🔭' },
   { id: 'part5', label: 'Journey & Recovery', icon: '🗺️' },
   { id: 'part1', label: 'Research & Brand', icon: '🔬' },
-  { id: 'transparency', label: 'AI Methodology', icon: '🤖' },
+  { id: 'transparency', label: 'AI Methodology', icon: '🤖', section: 'Intelligence' },
   { id: 'ai', label: 'AI Lab', icon: '✨' },
-  { id: 'conclusion', label: 'Executive Close', icon: '🎯' },
+  { id: 'conclusion', label: 'Executive Close', icon: '🎯', section: 'Close' },
 ];
 
 export const CHART_COLORS = {

@@ -1,5 +1,5 @@
-import { Platform } from '@/components/platform/Platform';
+import { HomePageClient } from '@/components/platform/HomePageClient';
 
 export default function HomePage() {
-  return <Platform />;
+  return <HomePageClient />;
 }

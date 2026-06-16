@@ -17,7 +17,7 @@ export function CompetitiveCharts() {
         ].map((k) => (
           <GlassCard key={k.l} className="text-center">
             <p className="text-xl font-bold text-orange-400">{k.v}</p>
-            <p className="text-[0.65rem] text-stone-500">{k.l}</p>
+            <p className="text-[0.65rem] text-muted">{k.l}</p>
           </GlassCard>
         ))}
       </div>
@@ -70,7 +70,7 @@ export function CompetitiveCharts() {
           <h3 className="mb-2 text-sm font-semibold">Sentiment Distribution</h3>
           <Doughnut
             data={{
-              labels: ['Positive (4–5★)', 'Neutral (3★)', 'Negative (1–2★)'],
+              labels: ['Positive (4-5★)', 'Neutral (3★)', 'Negative (1-2★)'],
               datasets: [{ data: [74, 18, 8], backgroundColor: [C.teal, C.amber, C.rose], borderWidth: 0 }],
             }}
             options={{ cutout: '62%' }}

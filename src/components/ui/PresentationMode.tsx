@@ -7,10 +7,10 @@ import { Btn } from '@/components/ui/primitives';
 
 const SLIDES = [
   { title: 'Zing & Zest Street Bites', body: 'Fresh. Fast. Full of Flavor.\nAI-powered marketing intelligence for Lahore food truck launch.' },
-  { title: 'Research Foundation', body: '20 semi-structured interviews · 18 hygiene mentions · PKR 300–500 price band validated.' },
+  { title: 'Research Foundation', body: '20 semi-structured interviews · 18 hygiene mentions · PKR 300-500 price band validated.' },
   { title: 'Customer Personas', body: '3 AI-validated personas: UCP Student (60%), Professional (28%), Explorer (12%).' },
   { title: 'Forecast Confidence', body: 'Year-1 Rs. 5.9M base · Break-even Month 2 · 24% net margin · 3 scenarios modeled.' },
-  { title: 'Competitive Edge', body: 'White space at Rs. 380 with 4.6★ target — hygiene (95), price-value (90), digital (88).' },
+  { title: 'Competitive Edge', body: 'White space at Rs. 380 with 4.6★ target - hygiene (95), price-value (90), digital (88).' },
   { title: 'IMC Launch Plan', body: 'Rs. 45,150 budget · 5,000 impressions · 200 DMs · 100 Day-1 customers.' },
   { title: 'AI Lab Capabilities', body: 'Copilot · Image Gen · Vision · RAG Search · Campaign Copy · Sentiment · Persona Matcher.' },
   { title: 'Investment Thesis', body: 'Scalable street-food platform · Rs. 19M Year-3 trajectory · Crisis-ready recovery plan.' },

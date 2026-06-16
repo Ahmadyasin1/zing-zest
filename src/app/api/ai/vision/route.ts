@@ -62,10 +62,10 @@ export async function POST(req: Request) {
   } catch (err) {
     const msg = err instanceof Error ? err.message : 'Vision analysis failed';
     return jsonOk({
-      result: `Food marketing image received — likely street food, burger/shawarma, or branded truck content for Zing & Zest. (${msg.slice(0, 60)})`,
+      result: `Food marketing image received - likely street food, burger/shawarma, or branded truck content for Zing & Zest. (${msg.slice(0, 60)})`,
       source: 'fallback',
       task,
-      note: 'Live vision model unavailable — contextual fallback used',
+      note: 'Live vision model unavailable - contextual fallback used',
     });
   }
 }

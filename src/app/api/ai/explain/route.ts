@@ -20,7 +20,7 @@ interface ExplainBody {
 
 const KPI_MAP: Record<string, string> = {
 
-  interviews: `20 semi-structured interviews: 12 students, 5 employees, 3 families. Hygiene mentioned 18 times — primary purchase driver.`,
+  interviews: `20 semi-structured interviews: 12 students, 5 employees, 3 families. Hygiene mentioned 18 times - primary purchase driver.`,
 
   budget: `IMC budget Rs. ${ZZ.imc.budgetTotal.toLocaleString()} across Meta ads, sampling, influencers, content, packaging, loyalty.`,
 
@@ -34,68 +34,49 @@ const KPI_MAP: Record<string, string> = {
 
   crisis: `25% Month-3 revenue drop scenario with 3-phase recovery targeting Rs. 792K by Month 6.`,
 
-  hygiene: `Hygiene trust is the #1 differentiator — 18/20 interview mentions. Visible gloves, sealed packaging.`,
+  hygiene: `Hygiene trust is the #1 differentiator - 18/20 interview mentions. Visible gloves, sealed packaging.`,
 
 };
 
 
 
 export async function POST(req: Request) {
-
   const key = rateLimitKey(req);
-
   if (!checkRateLimit(key)) return jsonError('Rate limit exceeded.', 429);
 
-
+  let kpiLabel = 'revenue';
 
   try {
-
     const { kpi } = await parseBody<ExplainBody>(req);
-
     if (!kpi?.trim()) return jsonError('KPI key is required', 400);
-
-
+    kpiLabel = kpi;
 
     const k = kpi.toLowerCase();
-
     const context = Object.entries(KPI_MAP).find(([key]) => k.includes(key))?.[1] || KPI_MAP.revenue;
-
-
+    const offlineExplanation = `**${kpi} Explained (offline):**\n\n${context}\n\n**Why it matters:** These metrics connect primary research to launch decisions - validated demand, funded acquisition, and measurable recovery plans.\n\n_Add HF_TOKEN for personalized AI explanations._`;
 
     if (!hasHfToken()) {
-
-      return jsonOk({
-
-        explanation: `**${kpi} Explained (offline):**\n\n${context}\n\n**Why it matters:** These metrics connect primary research to launch decisions — validated demand, funded acquisition, and measurable recovery plans.\n\n_Add HF_TOKEN for personalized AI explanations._`,
-
-        source: 'offline',
-
-      });
-
+      return jsonOk({ explanation: offlineExplanation, source: 'offline' });
     }
 
-
-
     const { text, model } = await hfComplete(
-
       `Explain this KPI to a non-technical stakeholder in 2 short paragraphs: "${kpi}"\nContext: ${context}`,
-
       'explain',
-
       { maxTokens: 300, temperature: 0.5 },
-
     );
 
-
-
     return jsonOk({ explanation: text, model, source: 'huggingface' });
-
   } catch (err) {
-
-    return jsonError(err instanceof Error ? err.message : 'Explain failed', 500);
-
+    const msg = err instanceof Error ? err.message : 'Explain failed';
+    if (/body|JSON|required/i.test(msg)) return jsonError(msg, 400);
+    const k = kpiLabel.toLowerCase();
+    const context = Object.entries(KPI_MAP).find(([key]) => k.includes(key))?.[1] || KPI_MAP.revenue;
+    return jsonOk({
+      explanation: `**${kpiLabel} Explained (offline):**\n\n${context}\n\n_Live AI temporarily unavailable._`,
+      source: 'offline',
+      notice: msg.includes('timed out') ? 'HF request timed out - showing offline explanation.' : 'Live AI unavailable.',
+    });
   }
-
 }
 
 

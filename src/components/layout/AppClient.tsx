@@ -1,8 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import { SplashScreen } from '@/components/ui/SplashScreen';
+
+const CopilotWidget = dynamic(
+  () => import('@/components/ai/CopilotWidget').then((m) => m.CopilotWidget),
+  { ssr: false },
+);
 
 export function AppClient({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false);
@@ -10,13 +15,10 @@ export function AppClient({ children }: { children: React.ReactNode }) {
   return (
     <>
       {!ready && <SplashScreen onDone={() => setReady(true)} />}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: ready ? 1 : 0 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      >
+      <div className={ready ? 'opacity-100 transition-opacity duration-300' : 'opacity-0'}>
         {children}
-      </motion.div>
+        {ready && <CopilotWidget />}
+      </div>
     </>
   );
 }

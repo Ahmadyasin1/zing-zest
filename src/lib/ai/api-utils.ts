@@ -1,7 +1,12 @@
 import { NextResponse } from 'next/server';
 
 export function jsonOk<T extends Record<string, unknown>>(data: T, extra?: Record<string, unknown>) {
-  return NextResponse.json({ ok: true, ...data, ...extra });
+  const { headers, ...rest } = (extra ?? {}) as Record<string, unknown> & { headers?: HeadersInit };
+  const response = NextResponse.json({ ok: true, ...data, ...rest });
+  if (headers) {
+    new Headers(headers).forEach((value, key) => response.headers.set(key, value));
+  }
+  return response;
 }
 
 export function jsonError(message: string, status = 500, extra?: Record<string, unknown>) {

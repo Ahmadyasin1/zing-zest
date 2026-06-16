@@ -1,7 +1,23 @@
 /**
  * End-to-end smoke test for Zing & Zest platform (dev/prod server must be running)
  */
-const BASE = process.env.TEST_URL || 'http://localhost:3000';
+const ENV_BASE = process.env.TEST_URL;
+
+async function resolveBase() {
+  if (ENV_BASE) return ENV_BASE;
+  for (let port = 3000; port <= 3010; port++) {
+    const url = `http://localhost:${port}`;
+    try {
+      const res = await fetch(url, { signal: AbortSignal.timeout(2000) });
+      if (res.ok) return url;
+    } catch {
+      /* try next port */
+    }
+  }
+  return 'http://localhost:3000';
+}
+
+const BASE = await resolveBase();
 
 const results = [];
 
@@ -127,6 +143,13 @@ await check('Static logo asset', async () => {
 await check('Team combined photo', async () => {
   const res = await fetch(`${BASE}/team/team-combined.png`);
   if (!res.ok) throw new Error(`team-combined ${res.status}`);
+});
+
+await check('Food menu images', async () => {
+  for (const img of ['/food/burger.png', '/food/shawarma.png', '/food/fries.png', '/food/drink.png']) {
+    const res = await fetch(`${BASE}${img}`);
+    if (!res.ok) throw new Error(`${img} → ${res.status}`);
+  }
 });
 
 const failed = results.filter((r) => !r.ok);

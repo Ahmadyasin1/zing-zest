@@ -116,7 +116,7 @@ export async function POST(req: Request) {
 
       source: 'fallback',
 
-      note: `DETR unavailable (${msg.slice(0, 50)}) — estimated food-truck objects returned`,
+      note: `DETR unavailable (${msg.slice(0, 50)}) - estimated food-truck objects returned`,
 
     });
 

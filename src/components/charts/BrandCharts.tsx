@@ -8,7 +8,7 @@ export function BrandCharts() {
   const cats = ZZ.competitors.filter((c) => !('highlight' in c && c.highlight));
   return (
     <GlassCard>
-      <h3 className="mb-3 text-sm font-semibold text-stone-400">Positioning Map</h3>
+      <h3 className="mb-3 text-sm font-semibold text-muted">Positioning Map</h3>
       <Scatter
         data={{
           datasets: [

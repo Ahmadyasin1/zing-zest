@@ -14,19 +14,22 @@ interface CampaignBody {
 }
 
 const OFFLINE_COPY: Record<CampaignType, string> = {
-  instagram: `🔥 **Student Combo — Rs. 380 only!**\n\nClassic Burger + Fries + Drink. Visible gloves. Sealed packaging. Clean truck. Fresh. Fast. Full of Flavor.\n\n📍 UCP Main Gate 12–3 PM\n#ZingAndZest #UCPEats #FreshFastFull`,
-  whatsapp: `Assalam-o-Alaikum! 🍔 Zing & Zest is at UCP Main Gate today 12–3 PM.\n\nStudent Combo Rs. 380 — burger, fries, drink.\nHygiene you can see. Order at the truck or DM us!\n\nFresh. Fast. Full of Flavor.`,
+  instagram: `🔥 **Student Combo - Rs. 380 only!**\n\nClassic Burger + Fries + Drink. Visible gloves. Sealed packaging. Clean truck. Fresh. Fast. Full of Flavor.\n\n📍 UCP Main Gate 12-3 PM\n#ZingAndZest #UCPEats #FreshFastFull`,
+  whatsapp: `Assalam-o-Alaikum! 🍔 Zing & Zest is at UCP Main Gate today 12-3 PM.\n\nStudent Combo Rs. 380 - burger, fries, drink.\nHygiene you can see. Order at the truck or DM us!\n\nFresh. Fast. Full of Flavor.`,
   tiktok: `POV: You find a food truck that actually looks CLEAN 😳\nStudent Combo Rs. 380 | UCP 12-3 PM\n#foodtruck #lahore #UCPEats #zingandzest`,
-  email: `Subject: Launch Week — Zing & Zest at UCP\n\nDear Student,\n\nWe're launching at UCP Main Gate with the Rs. 380 Student Combo. Hygiene-first street food with premium taste.\n\nSee you at lunch!`,
+  email: `Subject: Launch Week - Zing & Zest at UCP\n\nDear Student,\n\nWe're launching at UCP Main Gate with the Rs. 380 Student Combo. Hygiene-first street food with premium taste.\n\nSee you at lunch!`,
 };
 
 export async function POST(req: Request) {
   const key = rateLimitKey(req);
   if (!checkRateLimit(key)) return jsonError('Rate limit exceeded.', 429);
 
+  let type: CampaignType = 'instagram';
+
   try {
-    const { type = 'instagram', product = 'Student Combo Rs. 380', persona = 'UCP Student', tone = 'energetic, hygienic, affordable-premium' } =
-      await parseBody<CampaignBody>(req);
+    const body = await parseBody<CampaignBody>(req);
+    type = body.type ?? 'instagram';
+    const { product = 'Student Combo Rs. 380', persona = 'UCP Student', tone = 'energetic, hygienic, affordable-premium' } = body;
 
     if (!hasHfToken()) {
       return jsonOk({ copy: OFFLINE_COPY[type], source: 'offline', type });
@@ -47,6 +50,13 @@ Max 120 words.`,
 
     return jsonOk({ copy: text || OFFLINE_COPY[type], model, source: 'huggingface', type });
   } catch (err) {
-    return jsonError(err instanceof Error ? err.message : 'Campaign generation failed', 500);
+    const msg = err instanceof Error ? err.message : 'Campaign generation failed';
+    if (/body|JSON/i.test(msg)) return jsonError(msg, 400);
+    return jsonOk({
+      copy: OFFLINE_COPY[type],
+      source: 'offline',
+      type,
+      notice: 'Live AI unavailable - showing offline campaign copy.',
+    });
   }
 }

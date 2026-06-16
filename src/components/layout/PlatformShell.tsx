@@ -11,7 +11,11 @@ import { ZingZestLogo } from '@/components/ui/ZingZestLogo';
 import { cn } from '@/lib/utils';
 
 const CRUMBS: Record<PageId, string> = {
-  cover: 'Executive Overview',
+  cover: 'Home & Menu',
+  live: 'Live Truck Tracking',
+  recommend: 'AI Recommendations',
+  account: 'Account · Login / Sign Up',
+  inventory: 'Inventory Management',
   report: 'Executive Report',
   part1: 'Research & Brand',
   part2: 'Forecasting Models',
@@ -79,7 +83,7 @@ export function PlatformShell({ children }: { children: React.ReactNode }) {
 
       <aside
         className={cn(
-          'sidebar-shell fixed left-0 top-0 z-50 flex h-full w-[280px] flex-col transition-transform duration-300 lg:translate-x-0',
+          'sidebar-shell relative fixed left-0 top-0 z-50 flex h-full w-[288px] flex-col transition-transform duration-300 lg:translate-x-0',
           sidebarOpen ? 'translate-x-0' : '-translate-x-full',
         )}
       >
@@ -92,16 +96,18 @@ export function PlatformShell({ children }: { children: React.ReactNode }) {
           </button>
         </div>
 
-        <div className="border-b border-[var(--border-medium)] px-5 py-4">
-          <h2 className="font-display text-lg font-extrabold tracking-tight">Zing &amp; Zest</h2>
-          <p className="text-muted text-xs">AI Marketing Intelligence</p>
-          <p className="text-accent mt-1.5 text-[0.65rem] font-semibold tracking-wide">Fresh. Fast. Full of Flavor.</p>
+        <div className="sidebar-brand-block border-b border-[var(--border-medium)] px-5 py-4">
+          <span className="food-tag mb-3 inline-block">Fresh Street Food</span>
+          <h2 className="font-display text-lg font-extrabold tracking-tight text-gradient-warm">Zing &amp; Zest</h2>
+          <p className="text-muted text-xs">Burgers · Shawarma · Fries</p>
+          <p className="text-accent mt-1.5 text-[0.65rem] font-semibold">Fresh. Fast. Full of Flavor.</p>
         </div>
 
-        <nav className="flex-1 space-y-1 overflow-y-auto p-3">
-          {NAV_ITEMS.map((item) => (
-            <button
-              key={item.id}
+        <nav className="flex-1 space-y-0.5 overflow-y-auto p-3">
+          {NAV_ITEMS.map((item, idx) => (
+            <span key={item.id}>
+              {item.section && <p className={cn('nav-section-label', idx > 0 && 'mt-3')}>{item.section}</p>}
+              <button
               onClick={() => navigate(item.id)}
               className={cn(
                 'relative flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-sm',
@@ -111,7 +117,7 @@ export function PlatformShell({ children }: { children: React.ReactNode }) {
               {page === item.id && (
                 <motion.span
                   layoutId="nav-indicator"
-                  className="absolute inset-0 rounded-xl border border-[var(--border-accent)] bg-[var(--brand-orange-soft)]"
+                  className="absolute inset-0 rounded-xl border border-[var(--border-accent)] bg-gradient-to-r from-[var(--brand-orange-soft)] to-[var(--brand-teal-soft)] shadow-[0_0_20px_var(--glow-orange)]"
                   style={{ zIndex: -1 }}
                   transition={{ type: 'spring', stiffness: 380, damping: 32 }}
                 />
@@ -119,6 +125,7 @@ export function PlatformShell({ children }: { children: React.ReactNode }) {
               <span className="text-base">{item.icon}</span>
               <span className="relative">{item.label}</span>
             </button>
+            </span>
           ))}
         </nav>
 
@@ -133,15 +140,19 @@ export function PlatformShell({ children }: { children: React.ReactNode }) {
         </div>
       </aside>
 
-      <div className="lg:ml-[280px]">
-        <header className="topbar-shell sticky top-0 z-30 flex h-[64px] items-center justify-between px-4 lg:px-10">
+      <div className="lg:ml-[288px]">
+        <header className="topbar-shell relative sticky top-0 z-30 flex h-[68px] items-center justify-between px-4 lg:px-10">
           <div className="flex items-center gap-3">
             <button onClick={() => setSidebarOpen(true)} className="lg:hidden text-muted hover:text-[var(--text-primary)]" aria-label="Open menu">
               <Menu className="h-5 w-5" />
             </button>
             <div>
-              <p className="text-muted hidden text-[0.6rem] font-medium uppercase tracking-widest sm:block">Section</p>
-              <p className="font-display text-sm font-bold text-secondary">{CRUMBS[page]}</p>
+              <p className="text-muted hidden text-[0.6rem] font-bold uppercase tracking-[0.18em] sm:block">
+                {page === 'cover' ? 'Home' : 'Section'}
+              </p>
+              <p className="font-display text-sm font-bold tracking-tight text-secondary md:text-base">
+                {page === 'cover' ? 'Menu & Street Bites' : CRUMBS[page]}
+              </p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -162,10 +173,12 @@ export function PlatformShell({ children }: { children: React.ReactNode }) {
           </div>
         </header>
 
-        <main className="min-h-[calc(100vh-64px)] px-4 py-10 lg:px-10 lg:py-12">{children}</main>
+        <main className="relative min-h-[calc(100vh-68px)] px-4 py-8 lg:px-8 lg:py-12">
+          <div className="page-container">{children}</div>
+        </main>
 
-        <footer className="footer-elite px-4 py-10 lg:px-10">
-          <div className="mx-auto grid max-w-5xl gap-8 text-left sm:grid-cols-3">
+        <footer className="footer-elite px-4 py-12 lg:px-8">
+          <div className="page-container grid max-w-none gap-10 text-left sm:grid-cols-3">
             <div>
               <ZingZestLogo variant="compact" className="mb-3" />
               <p className="text-muted mt-2 text-xs leading-relaxed">
@@ -181,7 +194,7 @@ export function PlatformShell({ children }: { children: React.ReactNode }) {
                 {TEAM.map((m) => m.name).join(' · ')}
               </p>
               <p className="text-muted mt-2 text-[0.65rem] leading-relaxed">
-                Collaborative UCP team project — all five members contributed to Assignment 4.
+                Collaborative UCP team project - all five members contributed to Assignment 4.
               </p>
             </div>
             <div>
@@ -194,7 +207,7 @@ export function PlatformShell({ children }: { children: React.ReactNode }) {
           </div>
           <div className="section-rule mx-auto mt-8 max-w-xs opacity-30" />
           <p className="text-muted mt-4 text-center text-[0.65rem]">
-            Assignment 4 — Fundamentals of Marketing · Developed by {LEAD_DEVELOPER} · Built with Next.js &amp; Hugging Face AI
+            Assignment 4 - Fundamentals of Marketing · Developed by {LEAD_DEVELOPER} · Built with Next.js &amp; Hugging Face AI
           </p>
         </footer>
       </div>

@@ -55,7 +55,7 @@ export function VisionAnalyzer() {
       <div className="mb-4 flex items-center gap-2">
         <Eye className="h-5 w-5 text-teal-400" />
         <h3 className="font-bold">Computer Vision Lab</h3>
-        <span className="text-[0.65rem] text-stone-500">Caption · VQA · OCR · DETR</span>
+        <span className="text-[0.65rem] text-muted">Caption · VQA · OCR · DETR</span>
       </div>
 
       <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={(e) => e.target.files?.[0] && onFile(e.target.files[0])} />
@@ -69,8 +69,8 @@ export function VisionAnalyzer() {
           <img src={preview} alt="Upload preview" className="max-h-full max-w-full rounded-lg object-contain" />
         ) : (
           <>
-            <Upload className="mb-2 h-8 w-8 text-stone-500" />
-            <p className="text-sm text-stone-500">Upload food/marketing image</p>
+            <Upload className="mb-2 h-8 w-8 text-muted" />
+            <p className="text-sm text-muted">Upload food/marketing image</p>
           </>
         )}
       </div>
@@ -107,7 +107,7 @@ export function VisionAnalyzer() {
 
       {objects.length > 0 && (
         <div>
-          <p className="mb-2 text-xs font-semibold uppercase text-stone-500">Object Detection (DETR)</p>
+          <p className="mb-2 text-xs font-semibold uppercase text-muted">Object Detection (DETR)</p>
           <div className="flex flex-wrap gap-2">
             {objects.map((o, i) => (
               <span key={i} className="rounded-full bg-orange-500/15 px-2.5 py-1 text-xs text-orange-300">

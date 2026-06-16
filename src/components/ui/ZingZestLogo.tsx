@@ -25,7 +25,7 @@ export function ZingZestLogo({
   return (
     <Image
       src={BRAND_LOGO}
-      alt="Zing & Zest Street Bites — Fresh. Fast. Full of Flavor."
+      alt="Zing & Zest Street Bites - Fresh. Fast. Full of Flavor."
       width={width}
       height={height}
       priority={priority}

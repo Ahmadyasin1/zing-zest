@@ -75,7 +75,7 @@ export function ImageGenerator() {
         </motion.div>
       )}
       {!image && !loading && (
-        <div className="flex h-48 items-center justify-center rounded-xl border border-dashed border-white/10 text-sm text-stone-500">
+        <div className="flex h-48 items-center justify-center rounded-xl border border-dashed border-white/10 text-sm text-muted">
           Generated images appear here
         </div>
       )}

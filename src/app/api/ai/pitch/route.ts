@@ -20,11 +20,11 @@ interface PitchBody {
 
 const OFFLINE: Record<string, string> = {
 
-  investor: `**Zing & Zest — 60-Second Investor Pitch**\n\nLahore's UCP corridor has 12,000+ daily lunch seekers but no affordable-premium mobile option with visible hygiene trust.\n\nZing & Zest is a data-validated food truck: 20 interviews, Rs. 5.9M Year-1 base forecast, break-even Month 2, 24% margin.\n\nRs. 45,150 IMC targets 100 Day-1 customers. We're raising for truck #2 and Foodpanda integration.\n\nFresh. Fast. Full of Flavor — backed by AI-driven marketing intelligence.`,
+  investor: `**Zing & Zest - 60-Second Investor Pitch**\n\nLahore's UCP corridor has 12,000+ daily lunch seekers but no affordable-premium mobile option with visible hygiene trust.\n\nZing & Zest is a data-validated food truck: 20 interviews, Rs. 5.9M Year-1 base forecast, break-even Month 2, 24% margin.\n\nRs. 45,150 IMC targets 100 Day-1 customers. We're raising for truck #2 and Foodpanda integration.\n\nFresh. Fast. Full of Flavor - backed by AI-driven marketing intelligence.`,
 
-  professor: `**Academic Presentation Opener**\n\nOur Assignment 4 deliverable integrates primary research (20 interviews), AI-assisted persona synthesis, predictive forecasting, competitive benchmarking, and crisis recovery planning for Zing & Zest Street Bites — demonstrating how street-food entrepreneurship can operate with technology-startup analytical rigor.`,
+  professor: `**Academic Presentation Opener**\n\nOur Assignment 4 deliverable integrates primary research (20 interviews), AI-assisted persona synthesis, predictive forecasting, competitive benchmarking, and crisis recovery planning for Zing & Zest Street Bites - demonstrating how street-food entrepreneurship can operate with technology-startup analytical rigor.`,
 
-  customer: `**Customer Hook (15 sec)**\n\nHungry at UCP? Zing & Zest serves Student Combo — burger, fries, drink — for Rs. 380. Visible hygiene. Bold flavor. Find us at Main Gate 12–3 PM. Fresh. Fast. Full of Flavor.`,
+  customer: `**Customer Hook (15 sec)**\n\nHungry at UCP? Zing & Zest serves Student Combo - burger, fries, drink - for Rs. 380. Visible hygiene. Bold flavor. Find us at Main Gate 12-3 PM. Fresh. Fast. Full of Flavor.`,
 
 };
 
@@ -70,7 +70,7 @@ export async function POST(req: Request) {
       pitch: OFFLINE[audience] || OFFLINE.investor,
       source: 'offline',
       audience,
-      notice: 'Live AI unavailable — showing offline pitch.',
+      notice: 'Live AI unavailable - showing offline pitch.',
     });
   }
 }

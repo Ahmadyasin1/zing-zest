@@ -19,7 +19,7 @@ export function PersonaCharts() {
           { data: p3, color: C.amber, title: 'Explorer' },
         ].map((r) => (
           <GlassCard key={r.title}>
-            <h3 className="mb-2 text-sm font-semibold">Behavior Radar — {r.title}</h3>
+            <h3 className="mb-2 text-sm font-semibold">Behavior Radar - {r.title}</h3>
             <Radar
               data={{ labels, datasets: [{ data: [...r.data], borderColor: r.color, backgroundColor: alpha(r.color, 0.12), borderWidth: 2, pointRadius: 3 }] }}
               options={radarOpts}

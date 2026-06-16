@@ -52,7 +52,7 @@ export function PitchGenerator() {
       </Btn>
       {error && <ErrorBanner message={error} onRetry={generate} />}
       {pitch && (
-        <div className="rounded-xl bg-teal-500/10 p-4 text-sm leading-relaxed text-stone-200 whitespace-pre-wrap">{pitch}</div>
+        <div className="rounded-xl bg-teal-500/10 p-4 text-sm leading-relaxed text-secondary whitespace-pre-wrap">{pitch}</div>
       )}
     </GlassCard>
   );

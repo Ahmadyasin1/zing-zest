@@ -1,4 +1,4 @@
-import { hasHfToken } from '@/lib/ai/huggingface';
+import { HF_MODELS, hasHfToken } from '@/lib/ai/huggingface';
 import { jsonOk } from '@/lib/ai/api-utils';
 
 export async function GET() {
@@ -16,10 +16,10 @@ export async function GET() {
       { id: 'persona', name: 'Persona Matcher', status: 'ready', icon: '🎯' },
     ],
     models: {
-      chat: process.env.HF_CHAT_MODEL || 'mistralai/Mistral-7B-Instruct-v0.3',
-      image: process.env.HF_IMAGE_MODEL || 'stabilityai/stable-diffusion-xl-base-1.0',
-      vision: process.env.HF_VISION_MODEL || 'Salesforce/blip-image-captioning-large',
-      detect: process.env.HF_DETECT_MODEL || 'facebook/detr-resnet-50',
+      chat: HF_MODELS.chat,
+      image: HF_MODELS.image,
+      vision: HF_MODELS.vision,
+      detect: HF_MODELS.detect,
     },
-  });
+  }, { headers: { 'Cache-Control': 'public, max-age=60' } });
 }

@@ -61,7 +61,7 @@ export function CampaignCopyGenerator() {
       {error && <ErrorBanner message={error} onRetry={generate} />}
       {copy && (
         <div className="relative rounded-xl bg-orange-500/10 p-4">
-          <pre className="whitespace-pre-wrap text-sm leading-relaxed text-stone-200">{copy}</pre>
+          <pre className="whitespace-pre-wrap text-sm leading-relaxed text-secondary">{copy}</pre>
           <button onClick={doCopy} className="absolute right-2 top-2 rounded-lg bg-white/10 p-2 hover:bg-white/20">
             {copied ? <Check className="h-4 w-4 text-green-400" /> : <Copy className="h-4 w-4" />}
           </button>

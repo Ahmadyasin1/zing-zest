@@ -56,7 +56,7 @@ export function SemanticSearch() {
       <div className="mb-4 flex items-center gap-2">
         <Search className="h-5 w-5 text-orange-400" />
         <h3 className="font-bold">Semantic Search & RAG</h3>
-        {source && <span className="text-[0.65rem] text-stone-500">{source} retrieval</span>}
+        {source && <span className="text-[0.65rem] text-muted">{source} retrieval</span>}
       </div>
       <div className="mb-3 flex gap-2">
         <input
@@ -80,13 +80,13 @@ export function SemanticSearch() {
           >
             <div className="flex items-center justify-between gap-2">
               <span className="text-sm font-semibold text-orange-300">{r.title}</span>
-              <span className="text-[0.6rem] text-stone-500">{r.category}</span>
+              <span className="text-[0.6rem] text-muted">{r.category}</span>
             </div>
-            <p className="mt-1 text-xs text-stone-400 line-clamp-2">{r.snippet}</p>
+            <p className="mt-1 text-xs text-muted line-clamp-2">{r.snippet}</p>
           </button>
         ))}
         {!results.length && !loading && (
-          <p className="text-center text-sm text-stone-500">Try: &quot;hygiene interview findings&quot; or &quot;recovery strategy&quot;</p>
+          <p className="text-center text-sm text-muted">Try: &quot;hygiene interview findings&quot; or &quot;recovery strategy&quot;</p>
         )}
       </div>
     </GlassCard>

@@ -8,8 +8,8 @@ interface MatchBody {
 }
 
 const QUESTIONS = [
-  { id: 'budget', label: 'Typical meal budget?', options: ['Under Rs. 400', 'Rs. 400–600', 'Rs. 600+'] },
-  { id: 'time', label: 'When do you usually eat out?', options: ['Lunch (12–3 PM)', 'Evening (5–10 PM)', 'Late night'] },
+  { id: 'budget', label: 'Typical meal budget?', options: ['Under Rs. 400', 'Rs. 400-600', 'Rs. 600+'] },
+  { id: 'time', label: 'When do you usually eat out?', options: ['Lunch (12-3 PM)', 'Evening (5-10 PM)', 'Late night'] },
   { id: 'priority', label: 'What matters most?', options: ['Price & combos', 'Hygiene & speed', 'Experience & photos'] },
   { id: 'channel', label: 'How do you discover food?', options: ['TikTok / Instagram', 'WhatsApp / colleagues', 'Friends & influencers'] },
 ];
@@ -18,7 +18,7 @@ function scorePersona(answers: Record<string, string>) {
   const scores = [0, 0, 0]; // student, professional, explorer
   if (answers.budget?.includes('400')) scores[0] += 3;
   if (answers.budget?.includes('600+')) scores[1] += 2;
-  if (answers.budget?.includes('400–600')) scores[2] += 1;
+  if (answers.budget?.includes('400-600')) scores[2] += 1;
   if (answers.time?.includes('Lunch')) scores[0] += 2;
   if (answers.time?.includes('Evening')) scores[1] += 2;
   if (answers.time?.includes('Late')) scores[2] += 3;
@@ -38,7 +38,7 @@ function scorePersona(answers: Record<string, string>) {
     persona,
     confidence,
     recommendedCombo: maxIdx === 0 ? 'Student Combo Rs. 380' : maxIdx === 1 ? 'Wrap Combo Rs. 350' : 'Loaded Combo Rs. 550',
-    recommendedLocation: maxIdx === 0 ? 'UCP Main Gate 12–3 PM' : maxIdx === 1 ? 'Gulberg / DHA lunch windows' : 'Gulberg 5–10 PM',
+    recommendedLocation: maxIdx === 0 ? 'UCP Main Gate 12-3 PM' : maxIdx === 1 ? 'Gulberg / DHA lunch windows' : 'Gulberg 5-10 PM',
     marketingTip: maxIdx === 0
       ? 'Target via TikTok reels and campus sampling.'
       : maxIdx === 1

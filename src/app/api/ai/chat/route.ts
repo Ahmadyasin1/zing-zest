@@ -76,7 +76,7 @@ export async function POST(req: Request) {
       reply: localFallbackChat(message || 'Hello'),
       source: 'offline',
       rag: message ? searchCorpusLocal(message, 4).map(({ title, snippet, category }) => ({ title, snippet, category })) : [],
-      notice: 'Live AI unavailable — showing offline response.',
+      notice: 'Live AI unavailable - showing offline response.',
     });
   }
 }

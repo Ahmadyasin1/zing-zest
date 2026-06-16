@@ -8,7 +8,7 @@ import { fetchJson } from '@/lib/utils';
 const SAMPLES = [
   'The burger was amazing and the packaging looked so clean! Will come again.',
   'Too expensive for students and the queue was very long during lunch.',
-  'Love the Student Combo value. Hygiene visible with gloves — finally trust street food.',
+  'Love the Student Combo value. Hygiene visible with gloves - finally trust street food.',
 ];
 
 export function SentimentAnalyzer() {
@@ -65,12 +65,12 @@ export function SentimentAnalyzer() {
         <div className="space-y-3 rounded-xl bg-white/5 p-4">
           <div className="flex items-center justify-between">
             <span className={`text-2xl font-black ${color}`}>{result.label}</span>
-            <span className="text-sm text-stone-400">{result.confidence}% confidence</span>
+            <span className="text-sm text-muted">{result.confidence}% confidence</span>
           </div>
           <div className="flex flex-wrap gap-1">
             {result.themes.map((t) => <span key={t} className="rounded-full bg-white/10 px-2 py-0.5 text-xs">{t}</span>)}
           </div>
-          <p className="text-xs text-stone-400"><strong>Action:</strong> {result.recommendation}</p>
+          <p className="text-xs text-muted"><strong>Action:</strong> {result.recommendation}</p>
         </div>
       )}
     </GlassCard>

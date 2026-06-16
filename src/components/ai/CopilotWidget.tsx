@@ -15,7 +15,7 @@ interface Message {
 export function CopilotWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: 'Hi! I\'m **ZestAI** — your copilot for Zing & Zest. Ask about forecasts, personas, competitors, IMC, recovery strategy, or navigate the platform.' },
+    { role: 'assistant', content: 'Hi! I\'m **ZestAI** - your copilot for Zing & Zest. Ask about forecasts, personas, competitors, IMC, recovery strategy, or navigate the platform.' },
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -42,7 +42,7 @@ export function CopilotWidget() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMsg, history, mode: 'copilot' }),
       });
-      setMessages((m) => [...m, { role: 'assistant', content: data.reply + (data.source === 'offline' ? '\n\n_ℹ️ Offline mode — add HF_TOKEN for live LLM._' : '') }]);
+      setMessages((m) => [...m, { role: 'assistant', content: data.reply + (data.source === 'offline' ? '\n\n_ℹ️ Offline mode - add HF_TOKEN for live LLM._' : '') }]);
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Chat failed');
     } finally {

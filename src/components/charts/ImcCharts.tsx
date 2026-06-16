@@ -9,7 +9,7 @@ export function ImcCharts() {
   return (
     <div className="grid gap-4 lg:grid-cols-2">
       <GlassCard>
-        <h3 className="mb-3 text-sm font-semibold text-stone-400">Budget Composition</h3>
+        <h3 className="mb-3 text-sm font-semibold text-muted">Budget Composition</h3>
         <Doughnut
           data={{
             labels: b.map((x) => x.line),
@@ -19,7 +19,7 @@ export function ImcCharts() {
         />
       </GlassCard>
       <GlassCard>
-        <h3 className="mb-3 text-sm font-semibold text-stone-400">AIDA Funnel</h3>
+        <h3 className="mb-3 text-sm font-semibold text-muted">AIDA Funnel</h3>
         <Bar
           data={{
             labels: ZZ.imc.aida.map((a) => a.stage),

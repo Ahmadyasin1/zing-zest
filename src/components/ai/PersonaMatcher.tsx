@@ -7,8 +7,8 @@ import { GlassCard, Btn, ErrorBanner } from '@/components/ui/primitives';
 import { fetchJson } from '@/lib/utils';
 
 const QUESTIONS = [
-  { id: 'budget', label: 'Typical meal budget?', options: ['Under Rs. 400', 'Rs. 400–600', 'Rs. 600+'] },
-  { id: 'time', label: 'When do you usually eat out?', options: ['Lunch (12–3 PM)', 'Evening (5–10 PM)', 'Late night'] },
+  { id: 'budget', label: 'Typical meal budget?', options: ['Under Rs. 400', 'Rs. 400-600', 'Rs. 600+'] },
+  { id: 'time', label: 'When do you usually eat out?', options: ['Lunch (12-3 PM)', 'Evening (5-10 PM)', 'Late night'] },
   { id: 'priority', label: 'What matters most?', options: ['Price & combos', 'Hygiene & speed', 'Experience & photos'] },
   { id: 'channel', label: 'How do you discover food?', options: ['TikTok / Instagram', 'WhatsApp / colleagues', 'Friends & influencers'] },
 ];
@@ -59,7 +59,7 @@ export function PersonaMatcher() {
       <div className="mb-4 flex items-center gap-2">
         <Target className="h-5 w-5 text-violet-400" />
         <h3 className="font-bold">AI Persona Matcher</h3>
-        <span className="text-[0.65rem] text-stone-500">Interactive quiz</span>
+        <span className="text-[0.65rem] text-muted">Interactive quiz</span>
       </div>
 
       <AnimatePresence mode="wait">
@@ -70,7 +70,7 @@ export function PersonaMatcher() {
                 <div key={i} className={`h-1 flex-1 rounded-full ${i <= step ? 'bg-orange-500' : 'bg-white/10'}`} />
               ))}
             </div>
-            <p className="mb-1 text-xs text-stone-500">Question {step + 1} of {QUESTIONS.length}</p>
+            <p className="mb-1 text-xs text-muted">Question {step + 1} of {QUESTIONS.length}</p>
             <h4 className="mb-4 text-lg font-bold">{q.label}</h4>
             <div className="space-y-2">
               {q.options.map((opt) => (
@@ -81,7 +81,7 @@ export function PersonaMatcher() {
                   className="flex w-full items-center justify-between rounded-xl border border-white/10 px-4 py-3 text-left text-sm transition hover:border-orange-500/40 hover:bg-orange-500/5"
                 >
                   {opt}
-                  <ChevronRight className="h-4 w-4 text-stone-500" />
+                  <ChevronRight className="h-4 w-4 text-muted" />
                 </button>
               ))}
             </div>
@@ -91,12 +91,12 @@ export function PersonaMatcher() {
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center">
             <span className="text-5xl">{result.persona.avatar}</span>
             <h4 className="mt-2 text-xl font-black text-gradient">{result.persona.name}</h4>
-            <p className="text-sm text-stone-400">{result.persona.role}</p>
-            <p className="mt-2 text-xs italic text-stone-500">{result.persona.quote}</p>
+            <p className="text-sm text-muted">{result.persona.role}</p>
+            <p className="mt-2 text-xs italic text-muted">{result.persona.quote}</p>
             <div className="mt-4 grid gap-2 text-left text-sm">
-              <div className="rounded-lg bg-white/5 p-2"><span className="text-stone-500">Match confidence:</span> <strong className="text-orange-400">{result.confidence}%</strong></div>
-              <div className="rounded-lg bg-white/5 p-2"><span className="text-stone-500">Recommended:</span> {result.recommendedCombo}</div>
-              <div className="rounded-lg bg-white/5 p-2"><span className="text-stone-500">Visit:</span> {result.recommendedLocation}</div>
+              <div className="rounded-lg bg-white/5 p-2"><span className="text-muted">Match confidence:</span> <strong className="text-orange-400">{result.confidence}%</strong></div>
+              <div className="rounded-lg bg-white/5 p-2"><span className="text-muted">Recommended:</span> {result.recommendedCombo}</div>
+              <div className="rounded-lg bg-white/5 p-2"><span className="text-muted">Visit:</span> {result.recommendedLocation}</div>
               <div className="rounded-lg bg-teal-500/10 p-2 text-teal-300">{result.marketingTip}</div>
             </div>
             <Btn onClick={reset} variant="secondary" className="mt-4">Retake Quiz</Btn>
