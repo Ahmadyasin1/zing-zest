@@ -2,14 +2,50 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { MapPin, Clock, Flame } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { MapPin, Clock, Flame, ShoppingCart, Check } from 'lucide-react';
 import { ZZ } from '@/lib/data/zz';
 import { FadeUpItem } from '@/components/ui/primitives';
 import { formatRs } from '@/lib/utils';
 import { cn } from '@/lib/utils';
+import { useCart } from '@/components/providers/CartProvider';
 
 type MenuCategory = (typeof ZZ.menu.categories)[number]['id'];
+
+function AddToCartBtn({ name, price, category, image, isCombo }: { name: string; price: number; category: string; image: string; isCombo?: boolean }) {
+  const { add, items } = useCart();
+  const [added, setAdded] = useState(false);
+  const qty = items.find(i => i.name === name)?.qty ?? 0;
+
+  const handleAdd = () => {
+    add({ name, price, category, image, isCombo });
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1200);
+  };
+
+  return (
+    <button
+      onClick={handleAdd}
+      className={cn(
+        'relative flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-bold transition-all duration-200 active:scale-95',
+        added ? 'bg-emerald-500/20 text-emerald-400' : 'btn-primary text-white',
+      )}
+    >
+      <AnimatePresence mode="wait">
+        {added ? (
+          <motion.span key="check" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} className="flex items-center gap-1">
+            <Check className="h-3.5 w-3.5" /> Added!
+          </motion.span>
+        ) : (
+          <motion.span key="cart" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} className="flex items-center gap-1">
+            <ShoppingCart className="h-3.5 w-3.5" />
+            {qty > 0 ? `Add (${qty})` : 'Add'}
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </button>
+  );
+}
 
 export function MenuSection() {
   const [active, setActive] = useState<MenuCategory | 'combos'>('burgers');
@@ -73,6 +109,9 @@ export function MenuSection() {
                   </div>
                   <p className="food-price shrink-0">{formatRs(combo.price)}</p>
                 </div>
+                <div className="mt-3 flex justify-end">
+                  <AddToCartBtn name={combo.name} price={combo.price} category="combo" image={combo.image} isCombo />
+                </div>
               </div>
             </motion.article>
           ))}
@@ -97,6 +136,9 @@ export function MenuSection() {
                   <p className="food-price shrink-0 text-sm">{formatRs(item.price)}</p>
                 </div>
                 <p className="text-muted mt-1.5 text-xs leading-relaxed">{item.desc}</p>
+                <div className="mt-3 flex justify-end">
+                  <AddToCartBtn name={item.name} price={item.price} category={item.category} image={item.image} />
+                </div>
               </div>
             </motion.article>
           ))}

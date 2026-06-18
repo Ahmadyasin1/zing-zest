@@ -22,6 +22,8 @@ import { LiveTrackingMap } from '@/components/platform/LiveTrackingMap';
 import { AccountSection } from '@/components/platform/AccountSection';
 import { InventorySection } from '@/components/platform/InventorySection';
 import { Recommendations } from '@/components/platform/Recommendations';
+import { CheckoutSection } from '@/components/platform/CheckoutSection';
+import { VibeRecommendations } from '@/components/platform/VibeRecommendations';
 import { formatRs } from '@/lib/utils';
 
 const AiLab = dynamic(
@@ -44,6 +46,8 @@ export function Platform() {
         {page === 'cover' && <CoverPage goTo={goTo} />}
         {page === 'live' && <LiveTrackingMap />}
         {page === 'recommend' && <Recommendations />}
+        {page === 'vibe' && <VibeRecommendations />}
+        {page === 'checkout' && <CheckoutSection />}
         {page === 'account' && <AccountSection />}
         {page === 'inventory' && <InventorySection />}
         {page === 'report' && <ReportSection />}

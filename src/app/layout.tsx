@@ -3,6 +3,8 @@ import { Inter, Poppins } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { NavProvider } from '@/components/providers/NavProvider';
+import { AuthProvider } from '@/components/providers/AuthProvider';
+import { CartProvider } from '@/components/providers/CartProvider';
 import { PlatformShell } from '@/components/layout/PlatformShell';
 import { AppClient } from '@/components/layout/AppClient';
 import { AmbientLayer } from '@/components/ui/AmbientLayer';
@@ -32,15 +34,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className={`${inter.variable} ${poppins.variable} min-h-screen`}>
+      <body className={`${inter.variable} ${poppins.variable} min-h-screen`} suppressHydrationWarning>
         <AmbientLayer />
-        <ThemeProvider>
-          <NavProvider>
-            <AppClient>
-              <PlatformShell>{children}</PlatformShell>
-            </AppClient>
-          </NavProvider>
-        </ThemeProvider>
+        <AuthProvider>
+          <CartProvider>
+            <ThemeProvider>
+              <NavProvider>
+                <AppClient>
+                  <PlatformShell>{children}</PlatformShell>
+                </AppClient>
+              </NavProvider>
+            </ThemeProvider>
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );

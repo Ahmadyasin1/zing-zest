@@ -2,19 +2,46 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon, Sparkles, MapPin } from 'lucide-react';
+import {
+  Menu, X, Sun, Moon, Sparkles, MapPin, LogOut, ShoppingCart,
+  Home, Zap, Package, FileText, TrendingUp, BarChart2, Users,
+  Map, Bot, Cpu, Flag, Search, type LucideIcon,
+} from 'lucide-react';
+import { useCart } from '@/components/providers/CartProvider';
 import { NAV_ITEMS, LEAD_DEVELOPER, TEAM, type PageId } from '@/lib/data/zz';
 import { useNav } from '@/components/providers/NavProvider';
 import { useTheme } from '@/components/providers/ThemeProvider';
+import { useAuth } from '@/components/providers/AuthProvider';
 import { PresentationMode } from '@/components/ui/PresentationMode';
 import { ZingZestLogo } from '@/components/ui/ZingZestLogo';
 import { cn } from '@/lib/utils';
+
+const NAV_ICONS: Record<PageId, LucideIcon> = {
+  cover:        Home,
+  live:         MapPin,
+  recommend:    Sparkles,
+  vibe:         Zap,
+  checkout:     ShoppingCart,
+  account:      Users,
+  inventory:    Package,
+  report:       FileText,
+  part1:        Search,
+  part2:        TrendingUp,
+  part3:        BarChart2,
+  part4:        Users,
+  part5:        Map,
+  transparency: Bot,
+  ai:           Cpu,
+  conclusion:   Flag,
+};
 
 const CRUMBS: Record<PageId, string> = {
   cover: 'Home & Menu',
   live: 'Live Truck Tracking',
   recommend: 'AI Recommendations',
-  account: 'Account · Login / Sign Up',
+  vibe: 'Vibe Match',
+  checkout: 'Checkout',
+  account: 'My Account',
   inventory: 'Inventory Management',
   report: 'Executive Report',
   part1: 'Research & Brand',
@@ -32,6 +59,8 @@ export function PlatformShell({ children }: { children: React.ReactNode }) {
   const [scrollPct, setScrollPct] = useState(0);
   const { page, goTo } = useNav();
   const { theme, toggle } = useTheme();
+  const { user, logout } = useAuth();
+  const { totalItems } = useCart();
   const [clock, setClock] = useState('');
 
   useEffect(() => {
@@ -122,7 +151,7 @@ export function PlatformShell({ children }: { children: React.ReactNode }) {
                   transition={{ type: 'spring', stiffness: 380, damping: 32 }}
                 />
               )}
-              <span className="text-base">{item.icon}</span>
+              {(() => { const Icon = NAV_ICONS[item.id]; return <Icon className="h-4 w-4 shrink-0" />; })()}
               <span className="relative">{item.label}</span>
             </button>
             </span>
@@ -163,6 +192,23 @@ export function PlatformShell({ children }: { children: React.ReactNode }) {
             <button onClick={toggle} className="rounded-xl p-2.5 text-muted transition hover:bg-[var(--brand-orange-soft)] hover:text-[var(--text-primary)]" aria-label="Toggle theme">
               {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
+            <button
+              onClick={() => navigate('checkout')}
+              className="relative rounded-xl p-2.5 text-muted transition hover:bg-[var(--brand-orange-soft)] hover:text-[var(--text-primary)]"
+              aria-label="Cart"
+            >
+              <ShoppingCart className="h-4 w-4" />
+              {totalItems > 0 && (
+                <motion.span
+                  key={totalItems}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-orange-500 text-[0.6rem] font-black text-white"
+                >
+                  {totalItems > 9 ? '9+' : totalItems}
+                </motion.span>
+              )}
+            </button>
             <PresentationMode />
             <button
               onClick={() => navigate('ai')}
@@ -170,6 +216,27 @@ export function PlatformShell({ children }: { children: React.ReactNode }) {
             >
               <Sparkles className="h-3.5 w-3.5" /> AI Lab
             </button>
+            {user && (
+              <div className="flex items-center gap-2 border-l border-[var(--border-medium)] pl-2 ml-1">
+                <button
+                  onClick={() => navigate('account')}
+                  title={`Signed in as ${user.name}`}
+                  className="flex items-center gap-2 rounded-xl px-2.5 py-1.5 text-xs font-semibold text-muted transition hover:bg-[var(--brand-orange-soft)] hover:text-[var(--text-primary)]"
+                >
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-teal-500 text-[0.6rem] font-black text-white">
+                    {user.name.charAt(0).toUpperCase()}
+                  </div>
+                  <span className="hidden md:block max-w-[80px] truncate">{user.name}</span>
+                </button>
+                <button
+                  onClick={logout}
+                  title="Sign out"
+                  className="rounded-xl p-2 text-muted transition hover:bg-rose-500/10 hover:text-rose-400"
+                >
+                  <LogOut className="h-4 w-4" />
+                </button>
+              </div>
+            )}
           </div>
         </header>
 
