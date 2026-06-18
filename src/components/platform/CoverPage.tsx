@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Sparkles, MapPin, Star, Flame } from 'lucide-react';
+import { ArrowRight, Sparkles, MapPin, Star, Flame, Gift } from 'lucide-react';
 import { ZZ, LEAD_DEVELOPER, FOOD_IMAGES, type PageId } from '@/lib/data/zz';
 import { Btn, FadeUpItem } from '@/components/ui/primitives';
 import { MenuSection } from '@/components/platform/MenuSection';
@@ -87,6 +87,29 @@ export function CoverPage({ goTo }: { goTo: (id: PageId) => void }) {
               <Btn variant="secondary" onClick={() => goTo('live')}><MapPin className="h-4 w-4" /> Track Truck Live</Btn>
               <Btn variant="secondary" onClick={() => goTo('vibe')}><Sparkles className="h-4 w-4" /> AI Picks for You</Btn>
             </div>
+
+            <motion.button
+              type="button"
+              onClick={() => goTo('spin')}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="zest-spin-banner mt-5 flex w-full max-w-md items-center gap-4 rounded-2xl border border-orange-500/35 bg-gradient-to-r from-orange-500/15 via-amber-400/10 to-teal-500/10 p-4 text-left shadow-lg shadow-orange-500/10 transition hover:border-orange-500/50"
+            >
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-amber-400 text-2xl shadow-md animate-pulse">🎁</span>
+              <span className="min-w-0 flex-1">
+                <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-500">
+                  <Gift className="h-3.5 w-3.5" /> New — Spin & Win
+                </span>
+                <span className="font-display mt-0.5 block text-base font-black text-[var(--text-primary)]">
+                  Free fries, discounts & mystery prizes daily
+                </span>
+                <span className="text-muted text-xs">Tap to spin — everyone wins something</span>
+              </span>
+              <ArrowRight className="h-5 w-5 shrink-0 text-orange-500" />
+            </motion.button>
 
             <div className="mt-6 flex flex-wrap gap-2">
               <div className="hero-stat-chip"><Star className="h-3.5 w-3.5 fill-orange-500 text-orange-500" /> <strong>4.6</strong> <span className="text-muted text-xs">target rating</span></div>

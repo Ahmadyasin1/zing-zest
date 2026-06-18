@@ -5,14 +5,13 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ShoppingBag, Plus, Minus, Trash2, MapPin, Phone, User,
-  Star, CheckCircle2, ChevronRight, Tag as TagIcon, ShoppingCart,
+  Star, CheckCircle2, ChevronRight, ShoppingCart,
 } from 'lucide-react';
 import { useCart } from '@/components/providers/CartProvider';
 import { useAuth } from '@/components/providers/AuthProvider';
 import { useNav } from '@/components/providers/NavProvider';
-import { SectionHead, GlassCard, Btn, Tag } from '@/components/ui/primitives';
+import { SectionHead, GlassCard, Btn } from '@/components/ui/primitives';
 import { formatRs } from '@/lib/utils';
-import { ZZ } from '@/lib/data/zz';
 
 const PICKUP_STOPS = [
   { label: 'UCP Main Gate', time: '12:00 – 3:00 PM' },

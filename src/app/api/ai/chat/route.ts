@@ -3,6 +3,7 @@ import {
   buildChatSystemPrompt,
   getHfClient,
   hasHfToken,
+  hfChatCompletionOptions,
   localFallbackChat,
   searchCorpusLocal,
   withModelFallback,
@@ -50,12 +51,7 @@ export async function POST(req: Request) {
       [HF_MODELS.chat, ...HF_MODELS.chatFallbacks],
       async (modelId) => {
         const hf = getHfClient();
-        const out = await hf.chatCompletion({
-          model: modelId,
-          messages,
-          max_tokens: 512,
-          temperature: 0.7,
-        });
+        const out = await hf.chatCompletion(hfChatCompletionOptions(modelId, messages));
         const reply = out.choices?.[0]?.message?.content?.trim();
         if (reply) return reply;
         throw new Error('Empty chat response');
@@ -76,7 +72,8 @@ export async function POST(req: Request) {
       reply: localFallbackChat(message || 'Hello'),
       source: 'offline',
       rag: message ? searchCorpusLocal(message, 4).map(({ title, snippet, category }) => ({ title, snippet, category })) : [],
-      notice: 'Live AI unavailable - showing offline response.',
+      notice:
+        'Live AI unavailable. Enable inference providers at huggingface.co/settings/inference-providers and set HF_CHAT_MODEL to a supported model.',
     });
   }
 }

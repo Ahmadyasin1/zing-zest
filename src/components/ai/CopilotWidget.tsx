@@ -37,12 +37,16 @@ export function CopilotWidget() {
     setLoading(true);
     try {
       const history = messages.filter((m) => m.role === 'user' || m.role === 'assistant').slice(-8);
-      const data = await fetchJson<{ reply: string; source?: string }>('/api/ai/chat', {
+      const data = await fetchJson<{ reply: string; source?: string; notice?: string }>('/api/ai/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMsg, history, mode: 'copilot' }),
       });
-      setMessages((m) => [...m, { role: 'assistant', content: data.reply + (data.source === 'offline' ? '\n\n_ℹ️ Offline mode - add HF_TOKEN for live LLM._' : '') }]);
+      const offlineNote =
+        data.source === 'offline'
+          ? `\n\n_ℹ️ ${data.notice || 'Offline mode — add HF_TOKEN to .env.local, then restart the dev server.'}_`
+          : '';
+      setMessages((m) => [...m, { role: 'assistant', content: data.reply + offlineNote }]);
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Chat failed');
     } finally {

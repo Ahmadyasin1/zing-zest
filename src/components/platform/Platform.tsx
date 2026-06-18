@@ -19,6 +19,7 @@ import { ChartSection } from '@/components/charts';
 import { CoverPage } from '@/components/platform/CoverPage';
 import { TeamSection } from '@/components/platform/TeamSection';
 import { LiveTrackingMap } from '@/components/platform/LiveTrackingMap';
+import { ZestSpinSection } from '@/components/platform/ZestSpinSection';
 import { AccountSection } from '@/components/platform/AccountSection';
 import { InventorySection } from '@/components/platform/InventorySection';
 import { Recommendations } from '@/components/platform/Recommendations';
@@ -47,6 +48,7 @@ export function Platform() {
         {page === 'live' && <LiveTrackingMap />}
         {page === 'recommend' && <Recommendations />}
         {page === 'vibe' && <VibeRecommendations />}
+        {page === 'spin' && <ZestSpinSection />}
         {page === 'checkout' && <CheckoutSection />}
         {page === 'account' && <AccountSection />}
         {page === 'inventory' && <InventorySection />}

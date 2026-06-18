@@ -1,4 +1,17 @@
 @import 'tailwindcss';
+@import 'leaflet/dist/leaflet.css';
+
+.leaflet-container {
+  z-index: 1;
+  background: #0f1923;
+  font-family: inherit;
+}
+
+.leaflet-truck-marker,
+.leaflet-comp-marker {
+  background: transparent !important;
+  border: none !important;
+}
 
 /* ═══════════════════════════════════════════════════════════════
    Zing & Zest - Food Brand Design System v6

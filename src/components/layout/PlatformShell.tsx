@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Menu, X, Sun, Moon, Sparkles, MapPin, LogOut, ShoppingCart,
   Home, Zap, Package, FileText, TrendingUp, BarChart2, Users,
-  Map, Bot, Cpu, Flag, Search, type LucideIcon,
+  Map, Bot, Cpu, Flag, Search, Gift, type LucideIcon,
 } from 'lucide-react';
 import { useCart } from '@/components/providers/CartProvider';
 import { NAV_ITEMS, LEAD_DEVELOPER, TEAM, type PageId } from '@/lib/data/zz';
@@ -21,6 +21,7 @@ const NAV_ICONS: Record<PageId, LucideIcon> = {
   live:         MapPin,
   recommend:    Sparkles,
   vibe:         Zap,
+  spin:         Gift,
   checkout:     ShoppingCart,
   account:      Users,
   inventory:    Package,
@@ -40,6 +41,7 @@ const CRUMBS: Record<PageId, string> = {
   live: 'Live Truck Tracking',
   recommend: 'AI Recommendations',
   vibe: 'Vibe Match',
+  spin: 'Spin & Win Rewards',
   checkout: 'Checkout',
   account: 'My Account',
   inventory: 'Inventory Management',
@@ -152,7 +154,14 @@ export function PlatformShell({ children }: { children: React.ReactNode }) {
                 />
               )}
               {(() => { const Icon = NAV_ICONS[item.id]; return <Icon className="h-4 w-4 shrink-0" />; })()}
-              <span className="relative">{item.label}</span>
+              <span className="relative flex items-center gap-2">
+                {item.label}
+                {item.id === 'spin' && (
+                  <span className="rounded-full bg-gradient-to-r from-orange-500 to-amber-400 px-1.5 py-0.5 text-[0.55rem] font-black uppercase tracking-wide text-white shadow-sm">
+                    New
+                  </span>
+                )}
+              </span>
             </button>
             </span>
           ))}

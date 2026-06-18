@@ -220,6 +220,7 @@ export type PageId =
   | 'live'
   | 'recommend'
   | 'vibe'
+  | 'spin'
   | 'checkout'
   | 'account'
   | 'inventory'
@@ -239,6 +240,7 @@ export const NAV_ITEMS: { id: PageId; label: string; icon: string; section?: str
   { id: 'live', label: 'Live Tracking', icon: '📍', section: 'Order & Track' },
   { id: 'recommend', label: 'AI Recommendations', icon: '🎯' },
   { id: 'vibe', label: 'Vibe Match', icon: '🌡️' },
+  { id: 'spin', label: 'Spin & Win', icon: '🎁' },
   { id: 'checkout', label: 'Checkout', icon: '🛒' },
   { id: 'inventory', label: 'Inventory', icon: '📦', section: 'Operations' },
   { id: 'report', label: 'Executive Report', icon: '📄', section: 'Report & Analysis' },

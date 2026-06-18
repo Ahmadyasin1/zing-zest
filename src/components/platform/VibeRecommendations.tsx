@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { TrendingUp, Zap, Wallet, ShoppingCart, Check, ChevronRight, Flame } from 'lucide-react';
+import { TrendingUp, Zap, Wallet, ShoppingCart, Check } from 'lucide-react';
 import { SectionHead, GlassCard, Btn } from '@/components/ui/primitives';
 import { useCart } from '@/components/providers/CartProvider';
 import { useNav } from '@/components/providers/NavProvider';
@@ -240,19 +240,17 @@ export function VibeRecommendations() {
 // ═══════════════════════════════════════════════════════════════════════════════
 function TrendingPanel({ goTo }: { goTo: (p: 'checkout' | 'cover') => void }) {
   const [counts, setCounts] = useState(TRENDING_ITEMS.map(i => i.base));
-  const [tick, setTick] = useState(0);
   const [justUpdated, setJustUpdated] = useState<number[]>([]);
 
   useEffect(() => {
     const id = setInterval(() => {
       setCounts(prev => {
-        const next = prev.map((c, i) => c + Math.floor(Math.random() * 4));
-        const changed = next.map((n, i) => n !== prev[i] ? i : -1).filter(x => x >= 0);
+        const next = prev.map((c) => c + Math.floor(Math.random() * 4));
+        const changed = next.map((n, idx) => n !== prev[idx] ? idx : -1).filter(x => x >= 0);
         setJustUpdated(changed);
         setTimeout(() => setJustUpdated([]), 800);
         return next;
       });
-      setTick(t => t + 1);
     }, 3200);
     return () => clearInterval(id);
   }, []);
@@ -384,7 +382,7 @@ function FlavorDnaPanel({ goTo }: { goTo: (p: 'checkout') => void }) {
           <p className="text-sm text-muted">Pick one from each pair and we will map your flavor fingerprint.</p>
           {/* Progress */}
           <div className="flex gap-1">
-            {FLAVOR_PAIRS.map((p, i) => (
+            {FLAVOR_PAIRS.map((p) => (
               <div key={p.id} className={`h-1.5 flex-1 rounded-full transition-all duration-500 ${picks[p.id] ? 'bg-orange-500' : 'bg-white/10'}`} />
             ))}
           </div>
